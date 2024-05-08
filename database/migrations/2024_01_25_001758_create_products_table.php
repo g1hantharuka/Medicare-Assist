@@ -22,12 +22,6 @@ return new class extends Migration
 
             $table ->foreignId('product_category_id');
 
-
-            // ->foreignId('parent_id')
-            // ->nullable()
-            // ->constrained('product_category_id', 'id')
-            // ->nullOnDelete();
-
             $table->boolean('status')->default(true);
 
             $table->string('meta_title')->nullable();

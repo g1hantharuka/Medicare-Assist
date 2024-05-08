@@ -53,5 +53,12 @@ Route::middleware([
         'user',
         \App\Http\Controllers\UserController::class
     );
+
+    //3rd week work
+    //lol
+    //Middle ware for admin
+
+
+
 });
 
