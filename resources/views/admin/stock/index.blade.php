@@ -22,15 +22,15 @@
 
             <div class="sm:flex sm:items-center ">
                 <div class="sm:flex-auto">
-                    <h1 class="text-base font-semibold leading-6 text-gray-900">Products</h1>
+                    <h1 class="text-base font-semibold leading-6 text-gray-900">Stocks</h1>
                     <p class="mt-2 text-sm text-gray-700">
-                        A list of all the products in your account including their name, slug and actions.
+                        A list of all the stocks in your account including their id, product name, quantity and actions.
                     </p>
                 </div>
                 <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                    <a href="{{ route('product.create') }}"
+                    <a href="{{ route('stock.create') }}"
                         class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                        Create Product
+                        Create Stock
                     </a>
                 </div>
             </div>
@@ -46,16 +46,10 @@
                                     </th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Name</th>
+                                        Product</th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Category</th>
-                                    <th scope="col"
-                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Slug</th>
-                                    <th scope="col"
-                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Description</th>
+                                        Quantity</th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                         Actions</th>
@@ -65,36 +59,36 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
-                                @foreach ($product as $Product)
+                                @foreach ($stock as $Stock)
                                     <tr>
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Product->id }}</td>
+                                            {{ $Stock->id }}</td>
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Product->name }}</td>
+                                            {{ $Stock->product->name }}</td>
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Product->category->name }}</td>
+                                            {{ $Stock->quantity }}</td>
                                         {{-- <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             {{ ucwords(str_replace('_', ' ', Str::snake($product->product_category_id->name))) }}</td> --}}
 
-                                        <td
+                                        {{-- <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             {{ $Product->slug }}</td>
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Product->description }}</td>
+                                            {{ $Product->description }}</td> --}}
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             <div class="flex gap-3">
-                                                <a href="{{ route('product.show', $Product->id) }}"
-                                                    class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Show</a>
-                                                <a href="{{ route('product.edit', $Product->id) }}"
+                                                {{-- <a href="{{ route('product.show', $Stock->id) }}"
+                                                    class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Show</a> --}}
+                                                <a href="{{ route('stock.edit', $Stock->id) }}"
                                                     class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit</a>
                                                 <form
-                                                    action="{{ route('product.destroy', $Product->id) }}"
+                                                    action="{{ route('product.destroy', $Stock->id) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -112,6 +106,6 @@
             </div>
         </div>
 
-        {{ $product->links() }}
+        {{ $stock->links() }}
     </div>
 </x-app-layout>

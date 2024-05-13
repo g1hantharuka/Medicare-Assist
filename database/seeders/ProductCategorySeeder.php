@@ -24,19 +24,6 @@ class ProductCategorySeeder extends Seeder
    "Nasal corticosteroids" => array("Flonase (fluticasone)", "Nasonex (mometasone)", "Rhinocort (budesonide)"),
 
 
-//    "Antidepressants" => array("Prozac (fluoxetine)", "Zoloft (sertraline)", "Wellbutrin (bupropion)"),
-//    "Anti-anxiety medications" => array("Xanax (alprazolam)", "Buspar (buspirone)", "Ativan (lorazepam)"),
-//    "Mood stabilizers" => array("Lithium", "Lamictal (lamotrigine)", "Depakote (divalproex)"),
-
-
-//    "Antacids" => array("Tums (calcium carbonate)", "Pepto-Bismol (bismuth subsalicylate)", "Maalox (aluminum/magnesium hydroxide)"),
-//    "Laxatives" => array("Miralax (polyethylene glycol)", "Milk of Magnesia (magnesium hydroxide)", "Dulcolax (bisacodyl)"),
-//    "Antidiarrheals" => array("Pepto-Bismol", "Imodium (loperamide)", "Kaopectate (attapulgite)"),
-
-
-//    "Blood thinners" => array("Aspirin", "Warfarin (Coumadin)", "Heparin"),
-//    "Beta blockers" => array("Atenolol", "Metoprolol", "Propranolol"),
-//    "Statins" => array("Lipitor (atorvastatin)", "Zocor (simvastatin)", "Pravastatin"),
 
 );
 

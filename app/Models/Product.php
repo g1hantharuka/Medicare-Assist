@@ -24,4 +24,9 @@ class Product extends Model
     {
         return $this->belongsTo(ProductCategory::class, 'product_category_id');
     }
+
+    public function stocks(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Stock::class);
+    }
 }

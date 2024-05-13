@@ -338,6 +338,10 @@
                                     {{ __('Products') }}
                                 </x-dropdown-link>
 
+                                <x-dropdown-link href="{{  route('stock.index') }}">
+                                    {{ __('Stocks') }}
+                                </x-dropdown-link>
+
                         <div class="border-t border-gray-200"></div>
 
                         <!-- Authentication -->

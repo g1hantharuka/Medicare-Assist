@@ -53,5 +53,13 @@ Route::middleware([
         'user',
         \App\Http\Controllers\UserController::class
     );
+
+    //routes for stock
+    Route::middleware([
+         'user.admin'
+    ])->resource(
+        'stock',
+        \App\Http\Controllers\StockController::class
+    );
 });
 

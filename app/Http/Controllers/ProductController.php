@@ -18,9 +18,7 @@ class ProductController extends Controller
         return view('admin.product.index', ['product' => $product]);
 
 
-        // return view('admin.product.index', [
-        //     'product' => Product::orderBy('id', 'ASC')->paginate(10)
-        // ]);
+       
     }
 
     /**
