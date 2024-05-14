@@ -28,9 +28,6 @@ return new class extends Migration
 
             $table->boolean('status')->default(true);
 
-            // $table->string('meta_title')->nullable();
-            // $table->longText('meta_description')->nullable();
-            // $table->longText('meta_keywords')->nullable();
 
             $table->timestamps();
         });

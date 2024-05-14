@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\ProductCategory;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -18,7 +20,7 @@ class ProductController extends Controller
         return view('admin.product.index', ['product' => $product]);
 
 
-       
+
     }
 
     /**
@@ -29,6 +31,8 @@ class ProductController extends Controller
         return view('admin.product.form', [
 
             'product' => (new Product()),
+            //all product categories
+            'categories' => ProductCategory::all(),
 
 
         ]);
@@ -37,11 +41,37 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
-        (new Product())->create($request->all());
+        // (new Product())->create($request->all());
 
-        return redirect()->route('admin.product.index');
+        // return redirect()->route('admin.product.index');
+        $validated = $request->validate([
+            'name' => 'required|unique:products,name',
+            'slug' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+
+        ]);
+
+        // if ($request->hasFile('image')) {
+
+        //     $validated['image'] = $request->file('image')->store('products', 'public');
+
+        // }
+        if ($request->hasFile('image')){
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('uploads/products/', $filename);
+            // $post->image = $filename;
+
+            $validated['image'] = $filename;
+
+        }
+
+        Product::create($validated);
+
+        return redirect()->route('product.index')->with('success', 'Product successfully created!');
     }
 
     /**
@@ -70,10 +100,18 @@ class ProductController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required',
-            'slug' => 'required'
-            // 'email' => 'required|email',
-            // 'role' => 'required'
+            'slug' => 'required',
+            //description
+            'description' => 'required',
+            //Image
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        if ($request->hasFile('image')) {
+
+            $validated['image'] = $request->file('image')->store('products', 'public');
+
+        }
 
         $product->update($validated);
 

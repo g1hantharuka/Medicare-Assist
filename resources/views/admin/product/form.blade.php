@@ -1,6 +1,6 @@
 <x-app-layout>
-    <div class="container mx-auto mt-1">
-        <div class="space-y-10 divide-y divide-gray-900/10">
+    <div class="container mx-auto mt-4 ">
+        <div class="space-y-10 divide-y divide-gray-900/10 ">
 
             <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
                 <div class="px-4 sm:px-0">
@@ -18,6 +18,8 @@
                     action="{{ route('product.update', $product->id) }}"
                     @else
                     action="{{ route('product.store') }}"
+
+                    enctype="multipart/form-data"
                     @endif
                     class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
 
@@ -26,7 +28,7 @@
                         @method('PUT')
                     @endif
 
-                    <div class="px-4 py-6  sm:p-8">
+                    <div class="px-4 py-6  sm:p-8 " >
                         <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 ">
 
                             <div class="col-span-full">
@@ -87,54 +89,53 @@
                                 @enderror
 
                             </div>
-
+                            {{--    Product category selection field --}}
                             {{-- <div class="col-span-full">
-                                <label for="email" class="block text-sm font-medium leading-6 text-gray-900">
-                                    Email
+                                <label for="product_id" class="block text-sm font-medium leading-6 text-gray-900">
+                                    Product category
                                 </label>
                                 <div class="mt-2">
-                                    <input id="email" name="email" type="email" rows="3"
-                                        value="{{ old('email', $user->email) }}"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                                </div>
-                                <p class="mt-3 text-sm leading-6 text-gray-600">
-                                    Email of the user.
-                                </p>
-                                @error('email')
-                                    <p class="mt-3 text-sm leading-6 text-red-600">
-                                        {{ $message }}
-                                    </p>
-                                @enderror
-                            </div> --}}
-
-                            {{-- <div class="col-span-full">
-                                <label for="role" class="block text-sm font-medium leading-6 text-gray-900">
-                                    Category
-                                </label>
-                                <div class="mt-2">
-                                    <select id="category" name="category"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                                        @foreach ($category as $Category)
-                                            <option value="{{ $Category->name }}"
-                                                {{ ($product && old('category', $product?->category?->name) == $Category->name ? 'selected' : '') }}>
-                                                {{ ucwords(str_replace('_', ' ', Str::snake($Category->name))) }}
+                                    <select id="product_id" name="product_id"
+                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-4">
+                                        @foreach ($products as $Product)
+                                            <option value="{{ $Product->id }}"
+                                                {{ ($stock && old('product_id', $stock?->product?->id) == $Product->id ? 'selected' : '') }}>
+                                                {{ ucwords(str_replace('_', ' ', Str::snake($Product->name))) }}
 
                                             </option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <p class="mt-3 text-sm leading-6 text-gray-600">
-                                    Role of the user.
+                                    Category of the product.
                                 </p>
-                                @error('category')
+                                @error('product_id')
                                     <p class="mt-3 text-sm leading-6 text-red-600">
                                         {{ $message }}
                                     </p>
                                 @enderror
                             </div> --}}
+                            {{-- Product image file upload field --}}
+                            <div class="col-span-full">
+                                <label for="image" class="block text-sm font-medium leading-6 text-gray-900">
+                                    Image
+                                </label>
+                                <div class="mt-2">
+                                    <input id="image" name="image" type="file"
+                                        class="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                </div>
+                                <p class="mt-3 text-sm leading-6 text-gray-600 mb-5">
+                                    Image of the product.
+                                </p>
+                                @error('image')
+                                    <p class="mt-3 text-sm leading-6 text-red-600">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
 
+
+                            </div>
                         </div>
-                    </div>
                     <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
                         <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
                         <button type="submit"
