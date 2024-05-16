@@ -35,6 +35,8 @@ return new class extends Migration
 
             //image
             $table->string('image')->nullable();
+
+            $table->decimal('price', 10, 2)->default(5.00);
         });
     }
 

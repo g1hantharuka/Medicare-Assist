@@ -20,6 +20,7 @@ class Product extends Model
         'meta_keywords',
         //image
         'image',
+        'price',
 
     ];
 

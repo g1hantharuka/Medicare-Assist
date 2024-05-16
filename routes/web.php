@@ -63,3 +63,5 @@ Route::middleware([
     );
 });
 
+//Route for the products cards showing page
+Route::get('/products',[\App\Http\Controllers\ProductController::class,'showProducts'])->name('products');

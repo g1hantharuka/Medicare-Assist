@@ -23,6 +23,16 @@ class ProductController extends Controller
 
     }
 
+    // function to display all the products as cards in the products page
+    public function showProducts()
+    {
+        $products = Product::all();
+        return view('admin.product.show', compact('products'));
+        // return view('admin.product.show', [
+        //     'products' => Product::paginate(10)
+        // ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

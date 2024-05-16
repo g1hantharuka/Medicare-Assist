@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('stocks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id');
-            $table->tinyInteger('quantity')->default(0);
+            $table->tinyInteger('quantity')->default(50);
             $table->tinyInteger('stock_status')->default(1);
             $table->softDeletes();
             $table->timestamps();
