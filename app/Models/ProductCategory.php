@@ -19,4 +19,13 @@ class ProductCategory extends Model
         'meta_description',
         'meta_keywords',
     ];
+
+    public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(
+            Product::class,
+            'product_category_id'
+        );
+    }
+
 }

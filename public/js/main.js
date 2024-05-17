@@ -44,7 +44,7 @@
 
     // Price carousel
     $(".price-carousel").owlCarousel({
-        autoplay: true,
+        autoplay: false,
         smartSpeed: 1000,
         margin: 45,
         dots: false,

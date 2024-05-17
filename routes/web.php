@@ -65,3 +65,33 @@ Route::middleware([
 
 //Route for the products cards showing page
 Route::get('/products',[\App\Http\Controllers\ProductController::class,'showProducts'])->name('products');
+
+Route::get('/product/{product:slug}', [
+    \App\Http\Controllers\ProductController::class,
+    'show'
+])->name('product.show');
+
+
+Route::get('/category/{slug}', [
+    \App\Http\Controllers\ProductCategoryController::class,
+    'show'
+])->name('category.show');
+
+
+//Routes for the nav bar pages without controllers
+Route::get('/about', function () {
+    return view('pages.about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('pages.contact');
+})->name('contact');
+
+Route::get('/services', function () {
+    return view('pages.services');
+})->name('services');
+
+//pricing
+Route::get('/pricing', function () {
+    return view('pages.pricing');
+})->name('pricing');

@@ -189,7 +189,7 @@
     <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
 <!-- Footer section with social media icons and newsletter sign-up -->
 <footer
-  class="flex flex-col items-center text-center text-white" style="background-color: #1D2A4D">
+  class="flex flex-col items-center text-center text-white mt-40" style="background-color: #1D2A4D">
   <div class="container px-6 pt-6">
     <!-- Social media icons container -->
     <div class="mb-6 flex justify-center">
@@ -383,16 +383,16 @@
 
         <ul class="mb-0 list-none">
           <li>
-            123 Street, New York, USA
+            102/45, Puwakgaswaththa,<br> Makandana, Sri Lanka
           </li>
           <li>
-            info@example.com
+            medicareassist@gmail.com
           </li>
           <li>
-            +012 345 67890
+            011 270 2963
           </li>
           <li>
-            +012 345 67890
+            072 270 1880
           </li>
         </ul>
       </div>
@@ -405,7 +405,7 @@
   <div
     class="w-full p-4 text-center"
     style="background-color: rgba(0, 0, 0, 0.2)">
-    © 2023 MediCare Assist: All Rights Reserved
+    © 2024 MediCare Assist: All Rights Reserved
 
   </div>
 </footer>

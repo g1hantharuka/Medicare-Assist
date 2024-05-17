@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductCategoryRequest;
 use App\Http\Requests\UpdateProductCategoryRequest;
 use App\Models\ProductCategory;
+use Illuminate\Http\Request;
 
 class ProductCategoryController extends Controller
 {
@@ -44,9 +45,35 @@ class ProductCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ProductCategory $productCategory)
+    public function show(Request $request, string $slug)
     {
-        //
+        // check if a slug is there
+        if (!$slug || strlen($slug) < 2) {
+            abort(404);
+        }
+
+        // query for the category
+        $category = (new ProductCategory())
+            ->with([
+                'products'
+            ])
+            ->where('slug', $slug)
+            ->first();
+
+        if(!$category){
+            abort(404, 'Category Not Found');
+        }
+
+        // Query method (BAD BAD WAY)
+//         $products = (new Product())
+//            ->where('category_id', $category->id)
+//            ->get();
+
+
+        return view('admin.product_category.pharmacy', [
+            'category' => $category,
+            'products' => $category->products
+        ]);
     }
 
     /**

@@ -27,7 +27,7 @@ class ProductController extends Controller
     public function showProducts()
     {
         $products = Product::all();
-        return view('admin.product.show', compact('products'));
+        return view('admin.product.pharmacy', compact('products'));
         // return view('admin.product.show', [
         //     'products' => Product::paginate(10)
         // ]);
@@ -89,7 +89,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('admin.product.show', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -114,13 +116,28 @@ class ProductController extends Controller
             //description
             'description' => 'required',
             //Image
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            // 'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+
         ]);
 
+
+        // if ($request->hasFile('image')){
+        //     $file = $request->file('image');
+        //     $filename = time() . '.' . $file->getClientOriginalExtension();
+        //     $file->move('uploads/products/', $filename);
+        //     // $post->image = $filename;
+
+        //     $validated['image'] = $filename;
+
+        // }
         if ($request->hasFile('image')) {
-
-            $validated['image'] = $request->file('image')->store('products', 'public');
-
+        $file = $request->file('image');
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $file->move('uploads/products/', $filename);
+        $validated['image'] = $filename;
+        } else {
+        // If no new image is uploaded, retain the old image
+            $validated['image'] = $product->image;
         }
 
         $product->update($validated);
