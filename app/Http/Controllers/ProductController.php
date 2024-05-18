@@ -53,7 +53,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // (new Product())->create($request->all());
+
 
         // return redirect()->route('admin.product.index');
         $validated = $request->validate([
@@ -64,11 +64,7 @@ class ProductController extends Controller
 
         ]);
 
-        // if ($request->hasFile('image')) {
 
-        //     $validated['image'] = $request->file('image')->store('products', 'public');
-
-        // }
         if ($request->hasFile('image')){
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -110,40 +106,34 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $validated = $request->validate([
-            'name' => 'required',
-            'slug' => 'required',
-            //description
-            'description' => 'required',
-            //Image
-            // 'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-
-        ]);
-
-
-        // if ($request->hasFile('image')){
-        //     $file = $request->file('image');
-        //     $filename = time() . '.' . $file->getClientOriginalExtension();
-        //     $file->move('uploads/products/', $filename);
-        //     // $post->image = $filename;
-
-        //     $validated['image'] = $filename;
-
-        // }
-        if ($request->hasFile('image')) {
+    // Validate the request data, excluding the image initially
+    $validated = $request->validate([
+        'name' => 'required',
+        'slug' => 'required',
+        'description' => 'required',
+        'image' => 'required',
+    ]);
+    dd($validated);
+    // Check if an image file is present in the request
+    if ($request->hasFile('image')) {
         $file = $request->file('image');
         $filename = time() . '.' . $file->getClientOriginalExtension();
-        $file->move('uploads/products/', $filename);
-        $validated['image'] = $filename;
-        } else {
+        $file->move(public_path('uploads/products'), $filename); // Use public_path for correct directory
+        $validated['image'] = 'uploads/products/' . $filename; // Store the relative path
+    } else {
         // If no new image is uploaded, retain the old image
-            $validated['image'] = $product->image;
-        }
-
-        $product->update($validated);
-
-        return redirect()->route('product.index')->with('success', 'Product successfully updated!');
+        $validated['image'] = $product->image;
     }
+
+    // Debug output to check the validated data
+
+
+    // Update the product with the validated data
+    $product->update($validated);
+
+    return redirect()->route('product.index')->with('success', 'Product successfully updated!');
+    }
+
 
     /**
      * Remove the specified resource from storage.
