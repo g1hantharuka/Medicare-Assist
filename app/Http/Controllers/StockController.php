@@ -27,21 +27,17 @@ class StockController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        //
-        // return view('admin.stock.form', [
+{
+    // Retrieve products that do not have associated stock
+    $products = Product::doesntHave('stock')->get();
 
-        //     'stock' => (new Stock()),
+    // Return the view with the filtered products
+    return view('admin.stock.form', [
+        'stock' => new Stock(),
+        'products' => $products,
+    ]);
+}
 
-
-        // ]);
-
-        //retrn view admin.stock for new stock with the products to select a product in the form
-        return view('admin.stock.form', [
-            'stock' => (new Stock()),
-            'products' => Product::all()
-        ]);
-    }
 
     /**
      * Store a newly created resource in storage.

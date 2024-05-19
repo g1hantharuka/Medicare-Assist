@@ -61,6 +61,8 @@ class ProductController extends Controller
             'slug' => 'required',
             'description' => 'required',
             'image' => 'required',
+            'price' => 'required',
+            'product_category_id' => 'required',
 
         ]);
 
@@ -97,7 +99,8 @@ class ProductController extends Controller
     {
         return view('admin.product.form', [
             'product' => $product,
-            // 'roles' => Role::cases()
+            'categories' => ProductCategory::all(),
+
         ]);
     }
 
@@ -112,8 +115,11 @@ class ProductController extends Controller
         'slug' => 'required',
         'description' => 'required',
         'image' => 'required',
+        'price' => 'required',
+        'product_category_id' => 'required',
     ]);
-    dd($validated);
+
+    // dd($validated);
     // Check if an image file is present in the request
     if ($request->hasFile('image')) {
         $file = $request->file('image');

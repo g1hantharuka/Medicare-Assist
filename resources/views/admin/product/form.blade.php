@@ -4,18 +4,28 @@
 
             <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
                 <div class="px-4 sm:px-0">
+                    @if($product->id)
                     <h2 class="text-base font-semibold leading-7 text-gray-900">
                         Update Product
                     </h2>
                     <p class="mt-1 text-sm leading-6 text-gray-600">
                         Update the product details.
                     </p>
+                    @else
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">
+                        Add Product
+                    </h2>
+                    <p class="mt-1 text-sm leading-6 text-gray-600">
+                        Add a new product.
+                    </p>
+                    @endif
                 </div>
 
                 <form method="post"
 
                     @if($product->id)
                     action="{{ route('product.update', $product->id) }}"
+                    enctype="multipart/form-data"
                     @else
                     action="{{ route('product.store') }}"
 
@@ -44,6 +54,26 @@
                                     Name of the product.
                                 </p>
                                 @error('name')
+                                    <p class="mt-3 text-sm leading-6 text-red-600">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+
+                            </div>
+
+                            <div class="col-span-full">
+                                <label for="price" class="block text-sm font-medium leading-6 text-gray-900">
+                                    Price
+                                </label>
+                                <div class="mt-2">
+                                    <input id="price" name="price" rows="3"
+                                        value="{{ old('price', $product->price) }}"
+                                        class="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                </div>
+                                <p class="mt-3 text-sm leading-6 text-gray-600">
+                                    Price of the product.
+                                </p>
+                                @error('price')
                                     <p class="mt-3 text-sm leading-6 text-red-600">
                                         {{ $message }}
                                     </p>
@@ -90,17 +120,17 @@
 
                             </div>
                             {{--    Product category selection field --}}
-                            {{-- <div class="col-span-full">
-                                <label for="product_id" class="block text-sm font-medium leading-6 text-gray-900">
+                            <div class="col-span-full">
+                                <label for="product_category_id" class="block text-sm font-medium leading-6 text-gray-900">
                                     Product category
                                 </label>
                                 <div class="mt-2">
-                                    <select id="product_id" name="product_id"
+                                    <select id="product_category_id" name="product_category_id"
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-4">
-                                        @foreach ($products as $Product)
-                                            <option value="{{ $Product->id }}"
-                                                {{ ($stock && old('product_id', $stock?->product?->id) == $Product->id ? 'selected' : '') }}>
-                                                {{ ucwords(str_replace('_', ' ', Str::snake($Product->name))) }}
+                                        @foreach ($categories as $Category)
+                                            <option value="{{ $Category->id }}"
+                                                {{ ($product && old('product_category_id', $product?->productCategory?->id) == $Category->id ? 'selected' : '') }}>
+                                                {{ ucwords(str_replace('_', ' ', Str::snake($Category->name))) }}
 
                                             </option>
                                         @endforeach
@@ -109,12 +139,12 @@
                                 <p class="mt-3 text-sm leading-6 text-gray-600">
                                     Category of the product.
                                 </p>
-                                @error('product_id')
+                                @error('product_category_id')
                                     <p class="mt-3 text-sm leading-6 text-red-600">
                                         {{ $message }}
                                     </p>
                                 @enderror
-                            </div> --}}
+                            </div>
                             {{-- Product image file upload field --}}
                             <div class="col-span-full">
                                 <label for="image" class="block text-sm font-medium leading-6 text-gray-900">
