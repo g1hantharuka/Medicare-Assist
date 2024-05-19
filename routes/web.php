@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -95,3 +97,7 @@ Route::get('/services', function () {
 Route::get('/pricing', function () {
     return view('pages.pricing');
 })->name('pricing');
+
+//route for dashbaord function in DashboardController
+Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');
+
