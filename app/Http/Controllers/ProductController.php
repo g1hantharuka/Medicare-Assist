@@ -114,27 +114,23 @@ class ProductController extends Controller
         'name' => 'required',
         'slug' => 'required',
         'description' => 'required',
-        'image' => 'required',
+        'image' => 'nullable|image',
         'price' => 'required',
         'product_category_id' => 'required',
     ]);
 
-    // dd($validated);
-    // Check if an image file is present in the request
+
     if ($request->hasFile('image')) {
         $file = $request->file('image');
         $filename = time() . '.' . $file->getClientOriginalExtension();
         $file->move(public_path('uploads/products'), $filename); // Use public_path for correct directory
-        $validated['image'] = 'uploads/products/' . $filename; // Store the relative path
+        $validated['image'] = $filename; // Store the relative path
+
     } else {
         // If no new image is uploaded, retain the old image
         $validated['image'] = $product->image;
     }
 
-    // Debug output to check the validated data
-
-
-    // Update the product with the validated data
     $product->update($validated);
 
     return redirect()->route('product.index')->with('success', 'Product successfully updated!');

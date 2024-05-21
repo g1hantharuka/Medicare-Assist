@@ -129,7 +129,8 @@
                                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 pl-4">
                                         @foreach ($categories as $Category)
                                             <option value="{{ $Category->id }}"
-                                                {{ ($product && old('product_category_id', $product?->productCategory?->id) == $Category->id ? 'selected' : '') }}>
+                                                {{-- {{ ($product && old('product_category_id', $product?->productCategory?->id) == $Category->id ? 'selected' : '') }}> --}}
+                                                {{ (old('product_category_id', $product?->product_category_id) == $Category->id ? 'selected' : '') }}>
                                                 {{ ucwords(str_replace('_', ' ', Str::snake($Category->name))) }}
 
                                             </option>
