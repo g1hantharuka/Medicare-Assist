@@ -95,3 +95,12 @@ Route::get('/services', function () {
 Route::get('/pricing', function () {
     return view('pages.pricing');
 })->name('pricing');
+
+// Route::middleware("auth")->group(function () {
+
+// });
+
+Route::get('plans/{plan}', [
+    \App\Http\Controllers\PlanController::class,
+    'show'
+])->name('plans.show');
