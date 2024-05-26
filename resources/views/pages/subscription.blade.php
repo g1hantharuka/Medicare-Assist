@@ -1,23 +1,5 @@
 <x-app-layout>
 
-    {{--only show You will be charged amd show the price of the plan --}}
-    {{-- <div class="container-fluid py-5">
-        <div class="container">
-            <div class="row gx-5">
-                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 rounded" src="img/price-1.jpg" style="object-fit: cover; object-position: right;" >
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <div class="mb-4">
-                        <h5 class="d-inline-block text-primary text-uppercase ">Subscription</h5>
-                        <h1 class="display-4">You will be charged ${{ $plan->price }} for the {{ $plan->name }} Plan</h1>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-
     <div class="font-[sans-serif] bg-white p-4 pt-10 pb-10">
       <div class="md:max-w-5xl max-w-xl mx-auto">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -25,34 +7,22 @@
             <h2 class="text-3xl font-extrabold text-gray-800">Make a payment</h2>
             <p class="text-gray-800 text-sm mt-4">Complete your transaction swiftly and securely with our easy-to-use payment process.</p>
 
-            <form class="mt-8 max-w-lg" method="POST">
+            <form id="payment-form" class="mt-8 max-w-lg" method="POST" action="{{ route('subscription.create') }}">
                 @csrf
                 {{-- Hidden input field to pass plan which is plan id --}}
                 <input type="hidden" name="plan" value="{{ $plan->id }}">
-              <div class="grid gap-4">
-                <input type="text" placeholder="Cardholder's Name"
-                  class="px-4 py-3.5 bg-gray-100 text-gray-800 w-full text-sm border rounded-md focus:border-purple-500 focus:bg-transparent outline-none" />
+                <input type="hidden" name="token" id="payment-token">
 
-                <div class="flex bg-gray-100 border rounded-md focus-within:border-purple-500 focus-within:bg-transparent overflow-hidden">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="w-8 ml-3 mr-3" viewBox="0 0 32 20">
-                    <circle cx="10" cy="10" r="10" fill="#f93232" data-original="#f93232" />
-                    <path fill="#fed049"
-                      d="M22 0c-2.246 0-4.312.75-5.98 2H16v.014c-.396.298-.76.634-1.107.986h2.214c.308.313.592.648.855 1H14.03a9.932 9.932 0 0 0-.667 1h5.264c.188.324.365.654.518 1h-6.291a9.833 9.833 0 0 0-.377 1h7.044c.104.326.186.661.258 1h-7.563c-.067.328-.123.66-.157 1h7.881c.039.328.06.661.06 1h-8c0 .339.027.67.06 1h7.882c-.038.339-.093.672-.162 1h-7.563c.069.341.158.673.261 1h7.044a9.833 9.833 0 0 1-.377 1h-6.291c.151.344.321.678.509 1h5.264a9.783 9.783 0 0 1-.669 1H14.03c.266.352.553.687.862 1h2.215a10.05 10.05 0 0 1-1.107.986A9.937 9.937 0 0 0 22 20c5.523 0 10-4.478 10-10S27.523 0 22 0z"
-                      class="hovered-path" data-original="#fed049" />
-                  </svg>
-                  <input type="number" placeholder="Card Number"
-                    class="px-4 py-3.5 text-gray-800 w-full text-sm outline-none bg-transparent" />
+                <div class="grid gap-4">
+                    <input type="text" id="card-holder-name" name="name" placeholder="Cardholder's Name"
+                    class="px-4 py-3.5 bg-gray-100 text-gray-800 w-full text-sm border rounded-md focus:border-purple-500 focus:bg-transparent outline-none" required />
+
+                    <div class="flex bg-gray-100 border rounded-md focus-within:border-purple-500 focus-within:bg-transparent overflow-hidden">
+                        <div id="card-element" class="px-4 py-3.5 text-gray-800 w-full text-sm outline-none bg-transparent"></div>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-6">
-                  <input type="number" placeholder="EXP."
-                    class="px-4 py-3.5 bg-gray-100 text-gray-800 w-full text-sm border rounded-md focus:border-purple-500 focus:bg-transparent outline-none" />
-                  <input type="number" placeholder="CVV"
-                    class="px-4 py-3.5 bg-gray-100 text-gray-800 w-full text-sm border rounded-md focus:border-purple-500 focus:bg-transparent outline-none" />
-                </div>
-              </div>
-
-              <button type="button" class="mt-4 w-40 py-3.5 text-sm bg-purple-500 text-white rounded-md hover:bg-purple-600 tracking-wide">Pay  </button>
+                <button type="submit" class="mt-4 w-40 py-3.5 text-sm bg-purple-500 text-white rounded-md hover:bg-purple-600 tracking-wide" id="card-button" data-secret="{{ $intent->client_secret }}">Pay</button>
             </form>
           </div>
 
@@ -60,30 +30,52 @@
             <h2 class="text-3xl font-extrabold text-gray-800">${{ $plan->price }}</h2>
 
             <ul class="text-gray-800 mt-6 space-y-3">
-
-              <li class="flex flex-wrap gap-4 font-bold">Selected Plan </li>
-              <span class="ml-auto  text-sm">{{ $plan->name }}</span>
-
-              <li class="flex flex-wrap gap-4 font-bold">Plan Description </li>
-              <span class="ml-auto  text-sm">{{ $plan->description }}</span>
-
-              {{-- <li class="flex flex-wrap gap-4 text-sm">Echo Elegance <span class="ml-auto font-bold">$90.00</span></li>
-              <li class="flex flex-wrap gap-4 text-sm">Tax <span class="ml-auto font-bold">$10.00</span></li> --}}
+              <li class="flex flex-wrap gap-4 font-bold">Selected Plan <span class="ml-auto  text-sm">{{ $plan->name }}</span></li>
+              <li class="flex flex-wrap gap-4 font-bold">Plan Description <span class="ml-auto  text-sm">{{ $plan->description }}</span></li>
               <li class="flex flex-wrap gap-4 text-sm font-bold border-t-2 pt-4">Total <span class="ml-auto">${{ $plan->price }}</span></li>
             </ul>
-
-
           </div>
         </div>
       </div>
     </div>
 
-    {{-- stripe script --}}
+    {{-- Stripe script --}}
     <script src="https://js.stripe.com/v3/"></script>
     <script>
-      const stripe = Stripe('pk_test_51J0ZQvK5 ...');
+        const stripe = Stripe('{{ env('STRIPE_KEY') }}');
         const elements = stripe.elements();
         const cardElement = elements.create('card');
         cardElement.mount('#card-element');
-        
+
+        const form = document.getElementById('payment-form');
+        const cardButton = document.getElementById('card-button');
+        const cardHolderName = document.getElementById('card-holder-name');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            cardButton.disabled = true;
+
+            const { setupIntent, error } = await stripe.confirmCardSetup(
+                cardButton.dataset.secret, {
+                    payment_method: {
+                        card: cardElement,
+                        billing_details: {
+                            name: cardHolderName.value,
+                        },
+                    },
+                }
+            );
+
+            if (error) {
+                cardButton.disabled = false;
+                // Display error.message in your UI.
+            } else {
+                // Send the setupIntent.payment_method to your server.
+                let tokenInput = document.getElementById('payment-token');
+                tokenInput.value = setupIntent.payment_method;
+                form.submit();
+            }
+        });
+    </script>
 </x-app-layout>

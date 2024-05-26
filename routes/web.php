@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,3 +105,10 @@ Route::get('plans/{plan}', [
     \App\Http\Controllers\PlanController::class,
     'show'
 ])->name('plans.show');
+
+
+Route::middleware("auth")->group(function () {
+    // Route::get('plans', [PlanController::class, 'index']);
+    Route::get('plans/{plan}', [PlanController::class, 'show'])->name("plans.show");
+    Route::post('subscription', [PlanController::class, 'subscription'])->name("subscription.create");
+});
