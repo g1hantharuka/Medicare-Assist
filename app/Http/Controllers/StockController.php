@@ -17,9 +17,7 @@ class StockController extends Controller
             'products' => Product::all()
         ]);
 
-        //  $stock = Stock::with('product')->orderBy('id', 'ASC')->paginate(10);
-
-        // return view('admin.stock.index', ['stock' => $stock]);
+        
     }
 
 

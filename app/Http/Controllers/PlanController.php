@@ -34,7 +34,19 @@ class PlanController extends Controller
         $subscription = $request->user()->newSubscription($request->plan, $plan->stripe_plan)
                         ->create($request->token);
 
-        return view("pages.subscription_success");
+        // return view("pages.subscription_success");
+        // pass the plan to the view
+        return view('pages.subscription_success', compact('plan'));
     }
+
+    // public function admin()
+    // {
+    //     return view('admin.subscription.index', [
+    //         'subscriptions' => Subscription::orderBy('id', 'ASC')->paginate(10),
+    //         'users' => User::all()
+    //     ]);
+
+
+    // }
 
 }
