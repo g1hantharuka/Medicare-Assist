@@ -36,6 +36,8 @@
 <link href="{{url('admin/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
 <link href="{{url('admin/vendor/simple-datatables/style.css')}}" rel="stylesheet">
 
+<script src="https://cdn.tailwindcss.com"></script>
+
 
   <!-- Template Main CSS File -->
   {{-- <link href="assets/css/style.css" rel="stylesheet"> --}}
