@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 //user and plans model
 use App\Models\User;
 use App\Models\Plan;
+use App\Models\Subscription;
 
 
 class PlanController extends Controller
@@ -43,7 +44,8 @@ class PlanController extends Controller
     // {
     //     return view('admin.subscription.index', [
     //         'subscriptions' => Subscription::orderBy('id', 'ASC')->paginate(10),
-    //         'users' => User::all()
+    //         'users' => User::all(),
+    //         'plans' => Plan::all()
     //     ]);
 
 

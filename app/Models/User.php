@@ -66,4 +66,10 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    //subscription relationship
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
 }

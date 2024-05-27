@@ -24,7 +24,7 @@
                 <div class="sm:flex-auto">
                     <h1 class="text-base font-semibold leading-6 text-gray-900">Subscriptions</h1>
                     <p class="mt-2 text-sm text-gray-700">
-                        A list of all the subscriptions including their id, product name, quantity and actions.
+                        A list of all the subscriptions including their id, user, plan, status, date, time and actions.
                     </p>
                 </div>
                 <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
@@ -52,43 +52,51 @@
                                         Plan</th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        Status</th>
+                                    <th scope="col"
+                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                         Date</th>
-                                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
-                                        <span class="sr-only">Edit</span>
-                                    </th>
+                                    <th scope="col"
+                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        Time</th>
+                                    <th scope="col"
+                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        Actions</th>
+
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
-                                @foreach ($stock as $Stock)
+                                @foreach ($subscriptions as $Subscription)
                                     <tr>
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Stock->id }}</td>
+                                            {{ $Subscription->id }}</td>
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Stock->product->name }}</td>
+                                            {{ $Subscription->user->name }}</td>
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Stock->quantity }}</td>
-                                        {{-- <td
+                                            {{ $Subscription->plan->name }}</td>
+                                        <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ ucwords(str_replace('_', ' ', Str::snake($product->product_category_id->name))) }}</td> --}}
+                                            {{ $Subscription->stripe_status }}</td>
 
-                                        {{-- <td
-                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Product->slug }}</td>
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Product->description }}</td> --}}
+                                            {{ $Subscription->created_at->format('d/m/Y') }}</td>
+
+                                        <td
+                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                                            {{ $Subscription->created_at->format('H:i:s') }}</td>
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             <div class="flex gap-3">
-                                                {{-- <a href="{{ route('product.show', $Stock->id) }}"
+                                                {{-- <a href="{{ route('product.show', $Subscription->id) }}"
                                                     class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Show</a> --}}
-                                                <a href="{{ route('stock.edit', $Stock->id) }}"
+                                                <a href=""
                                                     class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit</a>
                                                 <form
-                                                    action="{{ route('product.destroy', $Stock->id) }}"
+                                                    action=""
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
@@ -106,6 +114,6 @@
             </div>
         </div>
 
-        {{ $stock->links() }}
+        {{ $subscriptions->links() }}
     </div>
 </x-app-layout>

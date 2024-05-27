@@ -345,6 +345,12 @@
                                     {{ __('Stocks') }}
                                 </x-dropdown-link>
 
+                                 <x-dropdown-link href="{{  route('subscription.index') }}">
+                                    {{ __('Subscriptions') }}
+                                </x-dropdown-link>
+
+
+
                         <div class="border-t border-gray-200"></div>
 
                         <!-- Authentication -->

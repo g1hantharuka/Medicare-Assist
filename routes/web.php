@@ -62,6 +62,14 @@ Route::middleware([
         'stock',
         \App\Http\Controllers\StockController::class
     );
+
+    //routes for subscriptions
+    Route::middleware([
+         'user.admin'
+    ])->resource(
+        'subscription',
+        \App\Http\Controllers\SubscriptionController::class
+    );
 });
 
 //Route for the products cards showing page
