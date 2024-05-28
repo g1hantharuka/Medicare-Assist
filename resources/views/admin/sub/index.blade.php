@@ -1,8 +1,9 @@
 @extends('backend.layouts.app')
 
 @section('content')
+{{-- <script src="https://cdn.tailwindcss.com"></script> --}}
 <section id="main" class="section">
-    <div class="container mx-auto mt-5 ">
+    <div class="container mx-auto mt-0">
         <div class="px-4 sm:px-6 lg:px-8 bg-white pt-4">
 
             @if (session('success'))
@@ -22,17 +23,17 @@
                 </div>
             @endif
 
-            <div class="sm:flex sm:items-center ">
+            <div class="sm:flex sm:items-center">
                 <div class="sm:flex-auto">
-                    <h1 class="text-base font-semibold leading-6 text-gray-900">Stocks</h1>
+                    <h1 class="text-base font-semibold leading-6 text-gray-900">Users</h1>
                     <p class="mt-2 text-sm text-gray-700">
-                        A list of all the stocks in your account including their id, product name, quantity and actions.
+                        A list of all the users registered including their name, email, role and actions.
                     </p>
                 </div>
                 <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                    <a href="{{ route('stock.create') }}"
+                    <a href="{{ route('user.create') }}"
                         class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                        Create Stock
+                        Create User
                     </a>
                 </div>
             </div>
@@ -48,10 +49,13 @@
                                     </th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Product</th>
+                                        Name</th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Quantity</th>
+                                        Email</th>
+                                    <th scope="col"
+                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        Role</th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                         Actions</th>
@@ -61,26 +65,48 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
-                                {{-- tbody with sample fake data --}}
-                                <tr>
-                                    <td class="px-3 py-3 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">1</div>
-                                    </td>
-                                    <td class="px-3 py-3 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">Product 1</div>
-                                    </td>
-                                    <td class="px-3 py-3 whitespace-nowrap">
-                                        <div class="text-sm text-gray-900">10</div>
-                                    </td>
-                                    <td class="px-3 py-3 whitespace-nowrap">
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                        <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
-                                    </td>
-                                    <td class="px-3 py-3 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                        <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
-                                    </td>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td
+                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                                            {{ $user->id }}</td>
+                                        <td
+                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                                            {{ $user->name }}</td>
+                                        <td
+                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                                            {{ $user->email }}</td>
+                                        <td
+                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                                            {{ ucwords(str_replace('_', ' ', Str::snake($user->role->name))) }}</td>
 
+                                        <td
 
+                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                                            <div class="flex gap-3">
+                                                <a href="{{ route('user.show', $user->id) }}"
+                                                    class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Show</a>
+                                                <a href="{{ route('user.edit', $user->id) }}"
+                                                    class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit</a>
+                                                <form
+                                                    action="{{ route('user.destroy', $user->id) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Delete</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        {{ $users->links() }}
+    </div>
+</section>

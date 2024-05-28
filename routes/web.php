@@ -3,6 +3,7 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Models\User;
 
 
 /*
@@ -102,6 +103,15 @@ Route::get('/pricing', function () {
 Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');
 
 //return view admin.sub.index
+// Route::get('/sub', function () {
+//     return view('admin.sub.index');
+// })->name('sub');
+
+
 Route::get('/sub', function () {
-    return view('admin.sub.index');
-})->name('sub');
+    // Fetch all users from the database
+    $users = User::paginate(10); // Example pagination, change as needed
+
+    // Pass the users data to the Blade view
+    return view('admin.sub.index', ['users' => $users]);
+});

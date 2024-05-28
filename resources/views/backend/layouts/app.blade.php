@@ -36,7 +36,7 @@
 <link href="{{url('admin/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
 <link href="{{url('admin/vendor/simple-datatables/style.css')}}" rel="stylesheet">
 
-<script src="https://cdn.tailwindcss.com"></script>
+
 
 
   <!-- Template Main CSS File -->
@@ -58,7 +58,7 @@
 
     </main><!-- End #main -->
 
-    @include('backend.layouts._footer')
+    {{-- @include('backend.layouts._footer') --}}
 
 
 
