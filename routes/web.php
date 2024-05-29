@@ -7,6 +7,10 @@ use App\Http\Controllers\SubscriptionController;
 use App\Models\Subscription;
 use App\Models\User;
 use App\Models\Plan;
+use App\Http\Controllers\DashboardController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -130,5 +134,20 @@ Route::middleware("auth")->group(function () {
         'plans' => Plan::all()
     ]);
     });
+});
+//route for dashbaord function in DashboardController
+Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');
 
+//return view admin.sub.index
+// Route::get('/sub', function () {
+//     return view('admin.sub.index');
+// })->name('sub');
+
+
+Route::get('/sub', function () {
+    // Fetch all users from the database
+    $users = User::paginate(10); // Example pagination, change as needed
+
+    // Pass the users data to the Blade view
+    return view('admin.sub.index', ['users' => $users]);
 });
