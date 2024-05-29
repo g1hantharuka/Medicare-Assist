@@ -1,8 +1,13 @@
-<x-app-layout>
-    <div class="container mx-auto mt-4 ">
+@extends('backend.layouts.app')
+
+@section('content')
+
+<section id="main" class="section">
+
+    <div class="container  ">
         <div class="space-y-10 divide-y divide-gray-900/10 ">
 
-            <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
+            <div class="grid grid-cols-1 gap-x-2 gap-y-0 md:grid-cols-3">
                 <div class="px-4 sm:px-0">
                     @if($product->id)
                     <h2 class="text-base font-semibold leading-7 text-gray-900">
@@ -23,6 +28,8 @@
 
                 <form method="post"
 
+
+
                     @if($product->id)
                     action="{{ route('product.update', $product->id) }}"
                     enctype="multipart/form-data"
@@ -31,7 +38,7 @@
 
                     enctype="multipart/form-data"
                     @endif
-                    class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+                    class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 ">
 
                     @csrf
                     @if ($product->id)
@@ -177,5 +184,5 @@
 
         </div>
     </div>
-</x-app-layout>
+</section>
 

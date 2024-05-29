@@ -138,10 +138,7 @@ Route::middleware("auth")->group(function () {
 //route for dashbaord function in DashboardController
 Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');
 
-//return view admin.sub.index
-// Route::get('/sub', function () {
-//     return view('admin.sub.index');
-// })->name('sub');
+
 
 
 Route::get('/sub', function () {

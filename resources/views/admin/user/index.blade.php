@@ -1,4 +1,8 @@
-<x-app-layout>
+@extends('backend.layouts.app')
+
+@section('content')
+
+<section id="main" class="section">
 
     <div class="container mx-auto mt-4">
         <div class="px-4 sm:px-6 lg:px-8 bg-white pt-4">
@@ -106,4 +110,4 @@
 
         {{ $users->links() }}
     </div>
-</x-app-layout>
+</section>

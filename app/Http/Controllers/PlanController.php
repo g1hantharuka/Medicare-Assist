@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
+
 use Illuminate\Http\Request;
-//for auth
-use Illuminate\Support\Facades\Auth;
-//user and plans model
-use App\Models\User;
 use App\Models\Plan;
-use App\Models\Subscription;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 
 class PlanController extends Controller
@@ -40,13 +39,18 @@ class PlanController extends Controller
         return view('pages.subscription_success', compact('plan'));
     }
 
-    // public function user()
+    // public function subscription(Request $request)
     // {
-    //     return view('user.subscription.index', [
-    //         'subscriptions' => Subscription::where('user_id', auth()->user()->id)->orderBy('id', 'ASC')->paginate(10),
-    //         'users' => User::all(),
-    //         'plans' => Plan::all()
-    //     ]);
+    //     $plan = Plan::find($request->plan);
+
+    //     $subscription = $request->user()->newSubscription($request->plan, $plan->stripe_plan)
+    //                     ->create($request->token);
+
+    //     return view('pages.subscription_success', compact('plan'));
     // }
+
+
+
+
 
 }

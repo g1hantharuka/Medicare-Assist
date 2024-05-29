@@ -1,6 +1,10 @@
-<x-app-layout>
+@extends('backend.layouts.app')
 
-    <div class="container mx-auto mt-4">
+@section('content')
+
+<section id="main" class="section">
+
+    <div class="container ">
         <div class="px-4 sm:px-6 lg:px-8 bg-white pt-4">
 
             @if (session('success'))
@@ -53,9 +57,9 @@
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                         Slug</th>
-                                    <th scope="col"
+                                    {{-- <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Description</th>
+                                        Description</th> --}}
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                         Image</th>
@@ -86,30 +90,51 @@
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             {{ $Product->slug }}</td>
-                                        <td
+                                        {{-- <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ Str::words($Product->description, 6, '...') }}</td>
+                                            {{ Str::words($Product->description, 6, '...') }}</td> --}}
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             {{ $Product->image }}</td>
                                         <td
-                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            <div class="flex gap-3">
-                                                <a href="{{ route('product.show', $Product->id) }}"
-                                                    class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Show</a>
+                                            class="whitespace-nowrap py-4 pl-5 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                                            <div class="flex gap-2">
+
                                                 <a href="{{ route('product.edit', $Product->id) }}"
+                                                    style="display: inline-block; padding: 0.5rem 1rem; height: 2rem; line-height: 1.5rem;"
                                                     class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit</a>
                                                 <form
                                                     action="{{ route('product.destroy', $Product->id) }}"
                                                     method="POST"
-                                                    {{-- onsubmit="return confirm('Are you sure you want to delete this product?');" --}}
+                                                    onsubmit="return confirm('Are you sure you want to delete this product?');"
                                                     >
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Delete</button>
+                                                    <button type="submit"
+                                                    style="display: inline-block; padding: 0.5rem 1rem; height: 2rem; line-height: 1.5rem;"
+                                                    class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Delete</button>
                                                 </form>
                                             </div>
                                         </td>
+                                        {{-- <td class="whitespace-nowrap py-4 pl-5 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+    <div class="flex gap-2">
+        <a href="{{ route('product.edit', $Product->id) }}"
+            style="display: inline-block; padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; color: #1a202c; background-color: #fff; border: 1px solid #d1d5db; border-radius: 0.25rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); text-align: center; vertical-align: middle; height: 2.5rem; line-height: 1.5rem;">
+            Edit
+        </a>
+        <form action="{{ route('product.destroy', $Product->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit"
+                style="display: inline-block; padding: 0.5rem 1rem; font-size: 0.75rem; font-weight: 600; color: #1a202c; background-color: #fff; border: 1px solid #d1d5db; border-radius: 0.25rem; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); text-align: center; vertical-align: middle; height: 2.5rem; line-height: 1.5rem;">
+                Delete
+            </button>
+        </form>
+    </div>
+</td> --}}
+
+
+
                                     </tr>
                                 @endforeach
 
@@ -122,4 +147,5 @@
 
         {{ $product->links() }}
     </div>
-</x-app-layout>
+</section>
+{{-- </x-app-layout> --}}

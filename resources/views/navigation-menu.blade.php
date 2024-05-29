@@ -348,8 +348,20 @@
                                     {{ __('Stocks') }}
                                 </x-dropdown-link>
 
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    {{ __('Manage Subscriptions') }}
+                                </div>
+
                                  <x-dropdown-link href="{{  route('subscription.index') }}">
                                     {{ __('Subscriptions') }}
+                                </x-dropdown-link>
+
+                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                    {{ __('Dashboard') }}
+                                </div>
+
+                                 <x-dropdown-link href="{{  route('dashboard') }}">
+                                    {{ __('Admin Dashboard') }}
                                 </x-dropdown-link>
 
 

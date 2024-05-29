@@ -1,4 +1,8 @@
-<x-app-layout>
+@extends('backend.layouts.app')
+
+@section('content')
+
+<section id="main" class="section">
 
     <div class="container mx-auto mt-1">
         <div class="px-4 sm:px-6 lg:px-8 bg-white pt-4">
@@ -60,7 +64,7 @@
                             </thead>
                             <tbody class="divide-y divide-gray-200">
                                 @foreach ($product_categories as $product_category)
-                                 
+
                                     <tr>
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
@@ -100,4 +104,4 @@
 
         {{ $product_categories->links() }}
     </div>
-</x-app-layout>
+</section>

@@ -3,7 +3,7 @@
 @extends('backend.layouts.app')
 
 @section('content')
-    <div class="pagetitle">
+    <div class="pagetitle pl-5">
       <h1>Dashboard</h1>
       <nav>
         <ol class="breadcrumb">
@@ -13,7 +13,7 @@
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section dashboard">
+    <section class="section dashboard pl-5">
       <div class="row">
 
         <!-- Left side columns -->
@@ -128,7 +128,7 @@
             </div><!-- End Customers Card -->
 
             <!-- Reports -->
-            <div class="col-12">
+            {{-- <div class="col-12">
               <div class="card">
 
                 <div class="filter">
@@ -644,7 +644,7 @@
 
         </div><!-- End Right side columns -->
 
-      </div>
+      </div> --}}
     </section>
 
 @endsection
