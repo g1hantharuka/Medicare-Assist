@@ -40,15 +40,13 @@ class PlanController extends Controller
         return view('pages.subscription_success', compact('plan'));
     }
 
-    // public function admin()
+    // public function user()
     // {
-    //     return view('admin.subscription.index', [
-    //         'subscriptions' => Subscription::orderBy('id', 'ASC')->paginate(10),
+    //     return view('user.subscription.index', [
+    //         'subscriptions' => Subscription::where('user_id', auth()->user()->id)->orderBy('id', 'ASC')->paginate(10),
     //         'users' => User::all(),
     //         'plans' => Plan::all()
     //     ]);
-
-
     // }
 
 }

@@ -3,7 +3,10 @@
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlanController;
-
+use App\Http\Controllers\SubscriptionController;
+use App\Models\Subscription;
+use App\Models\User;
+use App\Models\Plan;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -119,4 +122,13 @@ Route::middleware("auth")->group(function () {
     // Route::get('plans', [PlanController::class, 'index']);
     Route::get('plans/{plan}', [PlanController::class, 'show'])->name("plans.show");
     Route::post('subscription', [PlanController::class, 'subscription'])->name("subscription.create");
+
+    Route::get('/users/subscription', function () {
+    return view('user.subscription.index', [
+        'subscriptions' => Subscription::where('user_id', auth()->user()->id)->orderBy('id', 'ASC')->paginate(10),
+        'users' => User::all(),
+        'plans' => Plan::all()
+    ]);
+    });
+
 });
