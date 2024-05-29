@@ -36,13 +36,14 @@
 <link href="{{url('admin/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
 <link href="{{url('admin/vendor/simple-datatables/style.css')}}" rel="stylesheet">
 
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 
 
   <!-- Template Main CSS File -->
   {{-- <link href="assets/css/style.css" rel="stylesheet"> --}}
   <link href="{{url('admin/css/style.css')}}" rel="stylesheet">
 
+  <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
 
@@ -88,6 +89,8 @@
   <!-- Template Main JS File -->
   {{-- <script src="assets/js/main.js"></script> --}}
   <script src="{{url('admin/js/main.js')}}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
 
 </body>

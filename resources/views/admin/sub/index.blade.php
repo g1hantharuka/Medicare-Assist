@@ -1,7 +1,8 @@
+
 @extends('backend.layouts.app')
 
 @section('content')
-{{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+
 <section id="main" class="section">
     <div class="container mx-auto mt-0">
         <div class="px-4 sm:px-6 lg:px-8 bg-white pt-4">
@@ -25,7 +26,7 @@
 
             <div class="sm:flex sm:items-center">
                 <div class="sm:flex-auto">
-                    <h1 class="text-base font-semibold leading-6 text-gray-900">Users</h1>
+                    <h1 class="text-2xl font-bold leading-6 text-gray-900">Users</h1>
                     <p class="mt-2 text-sm text-gray-700">
                         A list of all the users registered including their name, email, role and actions.
                     </p>
@@ -110,3 +111,4 @@
         {{ $users->links() }}
     </div>
 </section>
+
