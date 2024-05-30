@@ -207,7 +207,10 @@
                 </div>
 
               </div>
-            </div><!-- End Reports -->
+            </div><!-- End Reports --> --}}
+            <!-- Reports -->
+
+
 
             <!-- Recent Sales -->
             <div class="col-12">
@@ -284,7 +287,7 @@
             </div><!-- End Recent Sales -->
 
             <!-- Top Selling -->
-            <div class="col-12">
+            {{-- <div class="col-12">
               <div class="card top-selling overflow-auto">
 
                 <div class="filter">
@@ -355,7 +358,7 @@
                 </div>
 
               </div>
-            </div><!-- End Top Selling -->
+            </div><!-- End Top Selling --> --}}
 
           </div>
         </div><!-- End Left side columns -->
@@ -644,7 +647,7 @@
 
         </div><!-- End Right side columns -->
 
-      </div> --}}
+      </div>
     </section>
 
 @endsection
