@@ -1,15 +1,29 @@
-<x-app-layout>
-    <div class="container mx-auto mt-5">
+@extends('backend.layouts.app')
+
+@section('content')
+
+<section id="main" class="section">
+
+    <div class="container ">
         <div class="space-y-10 divide-y divide-gray-900/10">
 
             <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
                 <div class="px-4 sm:px-0">
+                    @if($stock->id)
                     <h2 class="text-base font-semibold leading-7 text-gray-900">
                         Update Stock
                     </h2>
                     <p class="mt-1 text-sm leading-6 text-gray-600">
                         Update the stock details.
                     </p>
+                    @else
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">
+                        Create Stock
+                    </h2>
+                    <p class="mt-1 text-sm leading-6 text-gray-600">
+                        Create a new stock.
+                    </p>
+                    @endif
                 </div>
 
                 <form method="post"
@@ -115,5 +129,5 @@
 
         </div>
     </div>
-</x-app-layout>
+</section>
 

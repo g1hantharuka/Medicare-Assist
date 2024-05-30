@@ -4,7 +4,7 @@
 
 <section id="main" class="section">
 
-    <div class="container mx-auto mt-4">
+    <div class="container ">
         <div class="px-4 sm:px-6 lg:px-8 bg-white pt-4">
 
             @if (session('success'))
@@ -78,9 +78,13 @@
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             {{ $Subscription->user->name }}</td>
+                                        {{-- <td
+                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                                            {{ $Subscription->plan->name }}</td> --}}
+                                        {{-- with handelling null names --}}
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Subscription->plan->name }}</td>
+                                            {{ $Subscription->plan->name ?? 'Plan Deleted' }}</td>
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             {{ $Subscription->stripe_status }}</td>
@@ -98,13 +102,16 @@
                                                 {{-- <a href="{{ route('product.show', $Subscription->id) }}"
                                                     class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Show</a> --}}
                                                 <a href=""
+                                                    style="display: inline-block; padding: 0.5rem 1rem; height: 2rem; line-height: 1.5rem;"
                                                     class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit</a>
                                                 <form
                                                     action=""
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Delete</button>
+                                                    <button type="submit"
+                                                    style="display: inline-block; padding: 0.5rem 1rem; height: 2rem; line-height: 1.5rem;"
+                                                    class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Delete</button>
                                                 </form>
                                             </div>
                                         </td>

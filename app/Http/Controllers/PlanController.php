@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Laravel\Cashier\Exceptions\IncompletePayment;
 use App\Models\Plan;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -27,18 +28,6 @@ class PlanController extends Controller
         return view('pages.subscription', compact('plan', 'intent'));
     }
 
-    public function subscription(Request $request)
-    {
-        $plan = Plan::find($request->plan);
-
-        $subscription = $request->user()->newSubscription($request->plan, $plan->stripe_plan)
-                        ->create($request->token);
-
-        // return view("pages.subscription_success");
-        // pass the plan to the view
-        return view('pages.subscription_success', compact('plan'));
-    }
-
     // public function subscription(Request $request)
     // {
     //     $plan = Plan::find($request->plan);
@@ -46,11 +35,32 @@ class PlanController extends Controller
     //     $subscription = $request->user()->newSubscription($request->plan, $plan->stripe_plan)
     //                     ->create($request->token);
 
+    //     // return view("pages.subscription_success");
+    //     // pass the plan to the view
     //     return view('pages.subscription_success', compact('plan'));
     // }
 
 
 
+public function subscribe(Request $request)
+    {
+        $plan = Plan::find($request->plan);
 
+        // Attempt to create a subscription
+        try {
+            $subscription = $request
+            ->user()
+            ->newSubscription($request->plan, $plan->stripe_plan)
+            ->create($request->token);
+
+            // Redirect to a success page
+            return redirect()->route('pages.subscription_success');
+
+        } catch (\Exception $e) {
+
+            // Handle errors, possibly return to the form with error messages
+            return redirect()->route('pages.subscription_success')->withErrors(['msg' => $e->getMessage()]);
+        }
+    }
 
 }

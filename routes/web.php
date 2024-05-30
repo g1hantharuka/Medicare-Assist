@@ -26,6 +26,12 @@ Route::get('logout', function () {
     return view('/');
 });
 
+Route::get('dev', function () {
+
+    dd(auth()->user()->subscriptions);
+
+});
+
 
 
 Route::get("/",[HomeController::class,'index']);
@@ -125,7 +131,7 @@ Route::get('plans/{plan}', [
 Route::middleware("auth")->group(function () {
     // Route::get('plans', [PlanController::class, 'index']);
     Route::get('plans/{plan}', [PlanController::class, 'show'])->name("plans.show");
-    Route::post('subscription', [PlanController::class, 'subscription'])->name("subscription.create");
+    Route::post('subscription', [PlanController::class, 'subscribe'])->name("subscription.create");
 
     Route::get('/users/subscription', function () {
     return view('user.subscription.index', [
@@ -134,6 +140,11 @@ Route::middleware("auth")->group(function () {
         'plans' => Plan::all()
     ]);
     });
+
+    //route forpages.subscription_success
+    Route::get('/pages/subscription_success', function () {
+        return view('pages.subscription_success');
+    })->name('pages.subscription_success');
 });
 //route for dashbaord function in DashboardController
 Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Cashier\Subscription as CashierSubscription;
 
 class Plan extends Model
 {
@@ -24,6 +25,6 @@ class Plan extends Model
 
     public function subscriptions()
     {
-        return $this->hasMany(Subscription::class, 'type');
+        return $this->hasMany(CashierSubscription::class, 'type');
     }
 }

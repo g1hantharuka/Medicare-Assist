@@ -4,7 +4,7 @@
 
 <section id="main" class="section">
 
-    <div class="container mx-auto mt-4">
+    <div class="container ">
         <div class="px-4 sm:px-6 lg:px-8 bg-white pt-4">
 
             @if (session('success'))
@@ -85,16 +85,19 @@
 
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             <div class="flex gap-3">
-                                                <a href="{{ route('user.show', $user->id) }}"
-                                                    class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Show</a>
+                                                {{-- <a href="{{ route('user.show', $user->id) }}"
+                                                    class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Show</a> --}}
                                                 <a href="{{ route('user.edit', $user->id) }}"
+                                                    style="display: inline-block; padding: 0.5rem 1rem; height: 2rem; line-height: 1.5rem;"
                                                     class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit</a>
                                                 <form
                                                     action="{{ route('user.destroy', $user->id) }}"
                                                     method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Delete</button>
+                                                    <button type="submit"
+                                                    style="display: inline-block; padding: 0.5rem 1rem; height: 2rem; line-height: 1.5rem;"
+                                                    class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Delete</button>
                                                 </form>
                                             </div>
                                         </td>

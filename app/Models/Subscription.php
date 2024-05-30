@@ -31,5 +31,15 @@ class Subscription extends Model
     {
         return $this->belongsTo(Plan::class, 'type');
     }
-    
+
+    //items method which return the subscriptions not a relationship
+    // public function items()
+    // {
+    //     return $this->hasMany(Subscription::class, 'subscription_id');
+    // }
+
+
+
+
+
 }

@@ -2,6 +2,7 @@
 <aside id="sidebar-multi-level-sidebar" class="fixed top-0 left-0 z-40 w-80 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
    <div class="h-full px-3 py-4 overflow-y-auto bg-white ">
       <ul class="space-y-2 font-medium ">
+        @if(auth()->user()->role->value != 6)
 
          <li class="mt-12">
             <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-products" data-collapse-toggle="dropdown-products">
@@ -23,6 +24,7 @@
 
             </ul>
          </li>
+         
          <li>
             <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
                   <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -131,6 +133,53 @@
 
             </ul>
          </li>
+        @endif
+         @if(auth()->user()->role->value === 6)
+         <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-subscriptions" data-collapse-toggle="dropdown-subscriptions">
+
+                  <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 " xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 14H4v-2h16v2zm0-4H4v-6h16v6zM6 12h2v2H6v-2z"/>
+                  </svg>
+
+                  <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">My Subscriptions</span>
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+            </button>
+            <ul id="dropdown-subscriptions" class="hidden py-2 space-y-2 pl-10">
+                  <li>
+                     <a href="{{  route('subscription.index') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">View Subscriptions</a>
+                  </li>
+                  <li>
+                     <a href="{{ url('/pricing') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Create Subscription</a>
+                  </li>
+
+            </ul>
+         </li>
+         <li>
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-subscriptions" data-collapse-toggle="dropdown-subscriptions">
+
+                  <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 " xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 7h2v5h5v2h-7z"/>
+                 </svg>
+
+                  <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">My Bookings</span>
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                  </svg>
+            </button>
+            <ul id="dropdown-subscriptions" class="hidden py-2 space-y-2 pl-10">
+                  <li>
+                     <a href="{{  route('subscription.index') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">View Subscriptions</a>
+                  </li>
+                  <li>
+                     <a href="{{ url('/pricing') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Create Subscription</a>
+                  </li>
+
+            </ul>
+         </li>
+        @endif
       </ul>
    </div>
 </aside>

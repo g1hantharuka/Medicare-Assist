@@ -24,6 +24,7 @@ class User extends Authenticatable
     //use billable
     use Billable;
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -68,8 +69,8 @@ class User extends Authenticatable
     ];
 
     //subscription relationship
-    public function subscriptions()
-    {
-        return $this->hasMany(Subscription::class);
-    }
+    // public function subscriptions()
+    // {
+    //     return $this->hasMany(Subscription::class);
+    // }
 }
