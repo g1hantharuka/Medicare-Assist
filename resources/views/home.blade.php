@@ -132,7 +132,7 @@
                     <h1 class="display-1 text-white mb-md-4">Best Medical Assistance Solution for your loved ones</h1>
                     <div class="pt-2">
                         <a href="" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Appointment</a>
-                        <a href="" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">Packages</a>
+                        <a href="{{ url('/pricing') }}" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">Packages</a>
                     </div>
                 </div>
             </div>
@@ -358,7 +358,7 @@
 
 
     <!-- Pricing Plan Start -->
-    <div class="container-fluid py-5 ">
+    <div class="container-fluid py-5 " style="padding-bottom: 20px;">
         <div class="container ">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
                 <h5 class="d-inline-block text-primary text-uppercase border-bottom border-0">Medical Packages</h5>
@@ -449,6 +449,8 @@
             </div>
         </div>
     </div>
+
+    <
     <!-- Pricing Plan End -->
 
 
