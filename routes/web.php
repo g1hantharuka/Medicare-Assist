@@ -145,6 +145,9 @@ Route::middleware("auth")->group(function () {
     Route::get('/pages/subscription_success', function () {
         return view('pages.subscription_success');
     })->name('pages.subscription_success');
+
+    //route for booking create booking controller
+    Route::get('/booking', [\App\Http\Controllers\BookingController::class,'create'])->name('booking.create');
 });
 //route for dashbaord function in DashboardController
 Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');
