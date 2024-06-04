@@ -2,9 +2,10 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="{{  route('dashboard') }}" class="logo d-flex align-items-center">
+      <a href="/" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">Dashbaord</span>
+        <img src="/img/logoM.png" alt="Logo" style="width: 110px; height: auto; ">
+        {{-- <span class="d-none d-lg-block">Dashbaord</span> --}}
       </a>
     </div><!-- End Logo -->
 
@@ -25,12 +26,12 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             {{-- <img src="admin/img/profile-img.jpg" alt="Profile" class="rounded-circle"> --}}
-            <span class="d-none d-md-block dropdown-toggle ps-2 pr-10">Admin</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2 pr-10">{{ auth()->user()->name }}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Admin</h6>
+              <h6>{{ auth()->user()->name }}</h6>
               {{-- <span>Web Designer</span> --}}
             </li>
             <li>

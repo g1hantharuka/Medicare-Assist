@@ -8,6 +8,7 @@ use App\Models\Subscription;
 use App\Models\User;
 use App\Models\Plan;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BookingController;
 
 
 
@@ -83,6 +84,14 @@ Route::middleware([
         'subscription',
         \App\Http\Controllers\SubscriptionController::class
     );
+
+    //routes for booking
+    // Route::middleware([
+    //      'user.admin'
+    // ])->resource(
+    //     'booking',
+    //     \App\Http\Controllers\BookingController::class
+    // );
 });
 
 //Route for the products cards showing page
@@ -146,8 +155,13 @@ Route::middleware("auth")->group(function () {
         return view('pages.subscription_success');
     })->name('pages.subscription_success');
 
-    //route for booking create booking controller
-    Route::get('/booking', [\App\Http\Controllers\BookingController::class,'create'])->name('booking.create');
+    // //route for booking create booking controller
+    // Route::post('/booking/create', [BookingController::class,'store'])->name('booking.create');
+
+    // //route for booking_success
+    // Route::get('/booking/success', function () {
+    //     return view('pages.booking_success');
+    // })->name('booking.success');
 });
 //route for dashbaord function in DashboardController
 Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');
@@ -162,3 +176,14 @@ Route::get('/sub', function () {
     // Pass the users data to the Blade view
     return view('admin.sub.index', ['users' => $users]);
 });
+
+//route for booking create booking controller
+Route::post('/booking/create', [BookingController::class,'store'])->name('booking.create');
+
+//Resource for booking
+    // Route::resource('booking', BookingController::class);
+
+    //route for booking_success
+    Route::get('/booking/success', function () {
+        return view('pages.booking_success');
+    })->name('booking.success');

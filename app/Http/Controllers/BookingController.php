@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Booking;
 
 class BookingController extends Controller
 {
@@ -27,7 +28,30 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            // 'user_id' => 'required',
+            // 'name' => 'required',
+            // // 'email' => 'required',
+            // 'mobile' => 'required',
+            // 'date' => 'required',
+            // 'time' => 'required',
+            'user_id' => 'required|exists:users,id',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'mobile' => 'required|string|max:15',
+            'gender' => 'required|string|max:10',
+            'date' => 'required|date',
+            'time' => 'required',
+
+        ]);
+
+        dd($validated);
+
+        // $validated['password'] = bcrypt('password');
+
+        Booking::create($validated);
+
+        return redirect()->route('booking.status')->with('success', 'You have booked the appoinment successfuly!');
     }
 
     /**
