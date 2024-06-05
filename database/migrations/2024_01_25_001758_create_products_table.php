@@ -21,6 +21,7 @@ return new class extends Migration
             $table->longText('description')->nullable();
 
             $table ->foreignId('product_category_id')->default(1);
+            // $table->foreignId('product_category_id')->constrained()->onDelete('cascade');
 
 
             $table->boolean('status')->default(true);
