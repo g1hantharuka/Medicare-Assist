@@ -32,7 +32,7 @@
           <p class="mt-1 text-sm text-slate-400">{{ Str::words($product->description, 6, '...') }}</p>
 
           <div class="mt-3 flex items-end justify-between">
-              <p class="text-lg font-bold text-blue-500">$ {{ $product->price }}</p>
+              <p class="text-lg font-bold text-blue-500">Rs {{ $product->price }}</p>
               {{-- Display product stock quantity --}}
                 {{-- <p class="text-sm text-slate-400">Stock: {{ $product->stock->quantity }}</p> --}}
                 @if ($product->stock)

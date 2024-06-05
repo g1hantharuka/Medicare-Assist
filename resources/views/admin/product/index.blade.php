@@ -83,16 +83,12 @@
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             {{ $Product->category->name }}</td>
-                                        {{-- <td
-                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ ucwords(str_replace('_', ' ', Str::snake($product->product_category_id->name))) }}</td> --}}
+
 
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             {{ $Product->slug }}</td>
-                                        {{-- <td
-                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ Str::words($Product->description, 6, '...') }}</td> --}}
+
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             {{ $Product->image }}</td>

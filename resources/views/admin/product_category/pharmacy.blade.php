@@ -28,10 +28,12 @@
           {{-- Display product category as a link --}}
             {{-- <a href="{{ route('product.category', $product->category->slug) }}" class="text-sm text-blue-500">{{ $product->category->name }}</a> --}}
           <a href="#" class="text-sm text-blue-500">{{ $product->category->name }}</a>
-          <p class="mt-1 text-sm text-slate-400">{{ $product->description }}</p>
+          {{-- <p class="mt-1 text-sm text-slate-400">{{ $product->description }}</p> --}}
+          {{-- discription with max value --}}
+            <p class="mt-1 text-sm text-slate-400">{{ Str::words($product->description, 8, '...') }}</p>
 
           <div class="mt-3 flex items-end justify-between">
-              <p class="text-lg font-bold text-blue-500">$ {{ $product->price }}</p>
+              <p class="text-lg font-bold text-blue-500">Rs {{ $product->price }}</p>
               {{-- Display product stock quantity --}}
                 {{-- <p class="text-sm text-slate-400">Stock: {{ $product->stock->quantity }}</p> --}}
                 @if ($product->stock)

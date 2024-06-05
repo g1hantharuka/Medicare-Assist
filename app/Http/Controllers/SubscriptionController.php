@@ -31,4 +31,11 @@ class SubscriptionController extends Controller
             'plans' => Plan::all()
         ]);
     }
+
+    public function destroy(Subscription $subscription)
+    {
+        $subscription->delete();
+
+        return redirect()->route('subscription.index') ->with('success', 'subscription successfully deleted!');
+    }
 }

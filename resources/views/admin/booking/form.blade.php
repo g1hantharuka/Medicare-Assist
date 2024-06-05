@@ -102,42 +102,44 @@
                             </div>
                             {{-- date --}}
                             <div class="col-span-full">
-                                <label for="date" class="block text-sm font-medium leading-6 text-gray-900">
-                                    Date
-                                </label>
-                                <div class="mt-2">
-                                    <input id="date" name="date" rows="3"
-                                        value="{{ old('date', $booking->date) }}"
-                                        class="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                                </div>
-                                <p class="mt-3 text-sm leading-6 text-gray-600">
-                                    Date of the booking.
-                                </p>
-                                @error('date')
-                                    <p class="mt-3 text-sm leading-6 text-red-600">
-                                        {{ $message }}
-                                    </p>
-                                @enderror
-                            </div>
+    <label for="date" class="block text-sm font-medium leading-6 text-gray-900">
+        Date
+    </label>
+    <div class="mt-2">
+        <input type="date" id="date" name="date"
+               value="{{ old('date', $booking->date) }}"
+               class="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+    </div>
+    <p class="mt-3 text-sm leading-6 text-gray-600">
+        Date of the booking.
+    </p>
+    @error('date')
+        <p class="mt-3 text-sm leading-6 text-red-600">
+            {{ $message }}
+        </p>
+    @enderror
+</div>
+
                             {{-- time --}}
                             <div class="col-span-full">
-                                <label for="time" class="block text-sm font-medium leading-6 text-gray-900">
-                                    Time
-                                </label>
-                                <div class="mt-2">
-                                    <input id="time" name="time" rows="3"
-                                        value="{{ old('time', $booking->time) }}"
-                                        class="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
-                                </div>
-                                <p class="mt-3 text-sm leading-6 text-gray-600">
-                                    Time of the booking.
-                                </p>
-                                @error('time')
-                                    <p class="mt-3 text-sm leading-6 text-red-600">
-                                        {{ $message }}
-                                    </p>
-                                @enderror
-                            </div>
+    <label for="time" class="block text-sm font-medium leading-6 text-gray-900">
+        Time
+    </label>
+    <div class="mt-2">
+        <input type="time" id="time" name="time"
+               value="{{ old('time', $booking->time) }}"
+               class="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+    </div>
+    <p class="mt-3 text-sm leading-6 text-gray-600">
+        Time of the booking.
+    </p>
+    @error('time')
+        <p class="mt-3 text-sm leading-6 text-red-600">
+            {{ $message }}
+        </p>
+    @enderror
+</div>
+
                             {{-- mobile --}}
                             <div class="col-span-full">
                                 <label for="mobile" class="block text-sm font-medium leading-6 text-gray-900">
@@ -160,22 +162,25 @@
                             {{-- gender field--}}
                             <div class="col-span-full">
                                 <label for="gender" class="block text-sm font-medium leading-6 text-gray-900">
-                                    gender
+                                Gender
                                 </label>
                                 <div class="mt-2">
-                                    <input id="gender" name="gender" rows="3"
-                                        value="{{ old('gender', $booking->gender) }}"
-                                        class="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                    <select id="gender" name="gender" class="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                                        <option value="Male" {{ old('gender', $booking->gender) == 'Male' ? 'selected' : '' }}>Male</option>
+                                        <option value="Female" {{ old('gender', $booking->gender) == 'Female' ? 'selected' : '' }}>Female</option>
+                                        <option value="Other" {{ old('gender', $booking->gender) == 'Other' ? 'selected' : '' }}>Other</option>
+                                    </select>
                                 </div>
                                 <p class="mt-3 text-sm leading-6 text-gray-600">
-                                    gender of the booking.
+                                Gender of the booking.
                                 </p>
                                 @error('gender')
-                                    <p class="mt-3 text-sm leading-6 text-red-600">
-                                        {{ $message }}
-                                    </p>
+                                <p class="mt-3 text-sm leading-6 text-red-600">
+                                    {{ $message }}
+                                </p>
                                 @enderror
                             </div>
+
 
 
 
