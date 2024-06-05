@@ -186,4 +186,4 @@ Route::post('/booking/create', [BookingController::class,'store'])->name('bookin
     //route for booking_success
     Route::get('/booking/success', function () {
         return view('pages.booking_success');
-    })->name('booking.success');
+    })->name('booking.status');

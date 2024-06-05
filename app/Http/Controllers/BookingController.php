@@ -28,6 +28,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+       // dd($request->all());//
         $validated = $request->validate([
             // 'user_id' => 'required',
             // 'name' => 'required',
@@ -37,17 +38,23 @@ class BookingController extends Controller
             // 'time' => 'required',
             'user_id' => 'required|exists:users,id',
             'name' => 'required|string|max:255',
+
+
             'email' => 'required|email',
-            'mobile' => 'required|string|max:15',
+            // 'mobile' => 'required|string|max:10',
+            'mobile' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
             'gender' => 'required|string|max:10',
             'date' => 'required|date',
             'time' => 'required',
+            'status' => 'required|string|max:255',
 
         ]);
 
-        dd($validated);
+        // dd($validated);
 
         // $validated['password'] = bcrypt('password');
+        // empty variable validated
+        // $validated = $request->all();
 
         Booking::create($validated);
 
