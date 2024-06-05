@@ -25,7 +25,7 @@
                         <p class="mb-2">Self-Monitoring Logs</p>
                         <p class="mb-2">Basic Customer Support</p>
 
-                        <a href="{{route('plans.show','basic-plan')}}" class="btn btn-primary rounded-pill py-3 px-5 my-2">Apply Now</a>
+                        <a href="{{route('plans.show','basic-plan')}}" class="btn btn-primary rounded-pill py-3 px-5 my-2">Buy Now</a>
                     </div>
                 </div>
                 <div class="bg-light rounded text-center">
@@ -45,7 +45,7 @@
                         <p class="mb-2">Monthly Summary Reports</p>
                         <p class="mb-2">Comprehensive Health Monitoring</p>
 
-                        <a href="{{route('plans.show','standard-plan')}}" class="btn btn-primary rounded-pill py-3 px-5 my-2">Apply Now</a>
+                        <a href="{{route('plans.show','standard-plan')}}" class="btn btn-primary rounded-pill py-3 px-5 my-2">Buy Now</a>
                     </div>
                 </div>
                 <div class="bg-light rounded text-center">
@@ -66,7 +66,7 @@
                         <p class="mb-2">Priority Customer Support</p>
 
 
-                        <a href="{{route('plans.show','premium-plan')}}" class="btn btn-primary rounded-pill py-3 px-5 my-2">Apply Now</a>
+                        <a href="{{route('plans.show','premium-plan')}}" class="btn btn-primary rounded-pill py-3 px-5 my-2">Buy Now</a>
                     </div>
                 </div>
 
