@@ -17,7 +17,7 @@ class StockController extends Controller
             'products' => Product::all()
         ]);
 
-        
+
     }
 
 
@@ -80,12 +80,10 @@ class StockController extends Controller
     public function update(Request $request, Stock $stock)
     {
         $validated = $request->validate([
-            'quantity' => 'required',
-            // 'product_id' => 'required|unique:stocks,product_id',
-            //Unique product id without the current product id
 
+            'quantity' => 'required',
             'product_id' => 'required|unique:stocks,product_id,' . $stock->id,
-            // 'role' => 'required'
+
         ]);
 
         $stock->update($validated);
@@ -96,8 +94,10 @@ class StockController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Stock $stock)
     {
-        //
+        $stock->delete();
+
+        return redirect()->route('stock.index') ->with('success', 'Stock successfully deleted!');
     }
 }

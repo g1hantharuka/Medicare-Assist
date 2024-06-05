@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Plan;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookingController;
+use App\Models\Booking;
 
 
 
@@ -85,13 +86,13 @@ Route::middleware([
         \App\Http\Controllers\SubscriptionController::class
     );
 
-    //routes for booking
-    // Route::middleware([
-    //      'user.admin'
-    // ])->resource(
-    //     'booking',
-    //     \App\Http\Controllers\BookingController::class
-    // );
+    // routes for booking
+    Route::middleware([
+         'user.admin'
+    ])->resource(
+        'booking',
+        \App\Http\Controllers\BookingController::class
+    );
 });
 
 //Route for the products cards showing page
@@ -147,6 +148,14 @@ Route::middleware("auth")->group(function () {
         'subscriptions' => Subscription::where('user_id', auth()->user()->id)->orderBy('id', 'ASC')->paginate(10),
         'users' => User::all(),
         'plans' => Plan::all()
+    ]);
+    });
+
+    Route::get('/users/booking', function () {
+    return view('user.booking.index', [
+        'bookings' => Booking::where('user_id', auth()->user()->id)->orderBy('id', 'ASC')->paginate(10),
+        'users' => User::all(),
+        // 'plans' => Plan::all()
     ]);
     });
 

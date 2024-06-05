@@ -227,10 +227,10 @@
             </button>
             <ul id="dropdown-bookings" class="hidden py-2 space-y-2 pl-10">
                   <li>
-                     <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">View Bookings</a>
+                     <a href="{{ route('booking.index') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">View Bookings</a>
                   </li>
                   <li>
-                     <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Create Booking</a>
+                     <a href="{{ route('booking.create') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Create Booking</a>
                   </li>
 
             </ul>
@@ -251,7 +251,7 @@
             </button>
             <ul id="dropdown-subscriptions" class="hidden py-2 space-y-2 pl-10">
                   <li>
-                     <a href="{{  route('subscription.index') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">View Subscriptions</a>
+                     <a href="{{ url('/users/subscription') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">View Subscriptions</a>
                   </li>
                   <li>
                      <a href="{{ url('/pricing') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Create Subscription</a>
@@ -260,7 +260,7 @@
             </ul>
          </li>
          <li>
-            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-subscriptions" data-collapse-toggle="dropdown-subscriptions">
+            <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 " aria-controls="dropdown-bookings" data-collapse-toggle="dropdown-bookings">
 
                   <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 " xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 7h2v5h5v2h-7z"/>
@@ -271,12 +271,12 @@
                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                   </svg>
             </button>
-            <ul id="dropdown-subscriptions" class="hidden py-2 space-y-2 pl-10">
+            <ul id="dropdown-bookings" class="hidden py-2 space-y-2 pl-10">
                   <li>
-                     <a href="{{  route('subscription.index') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">View Subscriptions</a>
+                     <a href="{{ url('/users/booking') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">View Bookings</a>
                   </li>
                   <li>
-                     <a href="{{ url('/pricing') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Create Subscription</a>
+                     <a href="{{ url('/contact') }}" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 ">Create Booking</a>
                   </li>
 
             </ul>

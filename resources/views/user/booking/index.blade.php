@@ -26,15 +26,15 @@
 
             <div class="sm:flex sm:items-center ">
                 <div class="sm:flex-auto">
-                    <h1 class="text-base font-semibold leading-6 text-gray-900">Subscriptions</h1>
+                    <h1 class="text-base font-semibold leading-6 text-gray-900">Bookings</h1>
                     <p class="mt-2 text-sm text-gray-700">
-                        A list of all the subscriptions including their id, user, plan, status, date, time and actions.
+                        A list of all the bookings including their id, status, email, gender, date, time and actions.
                     </p>
                 </div>
                 <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                    <a href="{{ route('subscription.create') }}"
+                    <a href="{{ url('/contact') }}"
                         class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                        Create New Subscription
+                        Create New Booking
                     </a>
                 </div>
             </div>
@@ -49,14 +49,19 @@
                                         ID
                                     </th>
                                     <th scope="col"
-                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        User</th>
+                                        class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0">
+                                        Status
+                                    </th>
+
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Plan</th>
+                                        Email</th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
-                                        Status</th>
+                                        Mobile</th>
+                                    <th scope="col"
+                                        class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                        Gender</th>
                                     <th scope="col"
                                         class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                         Date</th>
@@ -70,35 +75,42 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
-                                @foreach ($subscriptions as $Subscription)
+                                @foreach ($bookings as $Booking)
                                     <tr>
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Subscription->id }}</td>
+                                            {{ $Booking->id }}</td>
+
+                                        {{-- bookings status if 0 pending, if 1 comfirmed --}}
+                                        {{-- <td>{{$item->status == '1' ? 'Hidden' : 'Show'}}</td> --}}
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Subscription->user->name }}</td>
-                                        <td
-                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Subscription->plan->name }}</td>
-                                        <td
-                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Subscription->stripe_status }}</td>
+                                            {{ $Booking->status == '1' ? 'Confirmed' : 'Pending' }}</td>
 
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Subscription->created_at->format('d/m/Y') }}</td>
+                                            {{ $Booking->email }}</td>
+                                        <td
+                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                                            {{ $Booking->mobile }}</td>
+                                        <td
+                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                                            {{ $Booking->gender }}</td>
 
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
-                                            {{ $Subscription->created_at->format('H:i:s') }}</td>
+                                            {{ $Booking->date }}</td>
+
+                                        <td
+                                            class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                                            {{ $Booking->time }}</td>
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             <div class="flex gap-3">
-                                                {{-- <a href="{{ route('product.show', $Subscription->id) }}"
+                                                {{-- <a href="{{ route('product.show', $Booking->id) }}"
                                                     class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Show</a> --}}
-                                                <a href=""
-                                                    class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit</a>
+                                                {{-- <a href=""
+                                                    class="rounded bg-white px-2 py-1 text-xs font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit</a> --}}
                                                 <form
                                                     action=""
                                                     method="POST">
@@ -118,6 +130,6 @@
             </div>
         </div>
 
-        {{ $subscriptions->links() }}
+        {{ $bookings->links() }}
     </div>
 </section>
