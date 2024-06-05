@@ -462,7 +462,7 @@
                         <div class="position-absolute w-100 h-100 top-50 start-50 translate-middle rounded-top d-flex flex-column align-items-center justify-content-center" style="background: rgba(29, 42, 77, .8);">
                             <h3 class="text-white">Basic Plan</h3>
                             <h1 class="display-4 text-white mb-0">
-                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">$</small>19.99<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Month</small>
+                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">Rs</small>6,499<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Month</small>
                             </h1>
                         </div>
                     </div>
@@ -482,7 +482,7 @@
                         <div class="position-absolute w-100 h-100 top-50 start-50 translate-middle rounded-top d-flex flex-column align-items-center justify-content-center" style="background: rgba(29, 42, 77, .8);">
                             <h3 class="text-white">Standard Plan</h3>
                             <h1 class="display-4 text-white mb-0">
-                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">$</small>39.99<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Month</small>
+                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">Rs</small>11,999<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Month</small>
                             </h1>
                         </div>
                     </div>
@@ -503,7 +503,7 @@
                         <div class="position-absolute w-100 h-100 top-50 start-50 translate-middle rounded-top d-flex flex-column align-items-center justify-content-center" style="background: rgba(29, 42, 77, .8);">
                             <h3 class="text-white">Premium Plan</h3>
                             <h1 class="display-4 text-white mb-0">
-                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">$</small>69.99<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Month</small>
+                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">Rs</small>21,999<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Month</small>
                             </h1>
                         </div>
                     </div>
