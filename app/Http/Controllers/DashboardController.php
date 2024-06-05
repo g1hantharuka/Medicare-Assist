@@ -13,69 +13,129 @@ class DashboardController extends Controller
     //dashbaord function to return view backends.dashboard
     public function dashboard()
     {
-        // Start and end dates for the current month
-        $startDate = Carbon::now()->startOfMonth();
-        $endDate = Carbon::now()->endOfMonth();
+        // Prepare data for each month of the current year
+        $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-        // Fetching data
-        $users = User::whereBetween('created_at', [$startDate, $endDate])->get();
-        $customers = DB::table('subscription_items')
-            ->select('user_id')
-            ->distinct()
-            ->whereBetween('created_at', [$startDate, $endDate])
-            ->count();
-        $subscriptionItems = DB::table('subscription_items')
-            ->whereBetween('created_at', [$startDate, $endDate])
-            ->get();
+        $usersData = $this->getMonthlyUsersData();
+        $customersData = $this->getMonthlyCustomersData();
+        $subscriptionData = $this->getSubscriptionData();
+        $salesData = $this->getMonthlySalesData();
+        $totalUsers = User::count(); // Get the total number of users
+        $totalSales = $this->getTotalSalesForYear();
+        $totalCustomers = DB::table('subscription_items')->distinct('id')->count(); // Total number of customers
 
-        // Price mapping
-        $priceMapping = [
-            'price_1PJTQFJncBMXlWz2SEsZtgdB' => 70,
-            'price_1PJTPKJncBMXlWz2y0ZkBgeH' => 39,
-            'price_1PJTO7JncBMXlWz2ZX32QJMG' => 20,
-        ];
-
-        // Calculate total sales
-        $totalSales = 0;
-        foreach ($subscriptionItems as $item) {
-            $totalSales += $priceMapping[$item->stripe_price] ?? 0;
-        }
-
-        // Formatting data for the chart
-        $dates = [];
-        $usersData = [];
-        $customersData = [];
-        $salesData = [];
-
-        $currentDate = $startDate->copy();
-        while ($currentDate <= $endDate) {
-            $dates[] = $currentDate->format('Y-m-d');
-            $usersData[] = $users->where('created_at', '>=', $currentDate->startOfDay())
-                                 ->where('created_at', '<=', $currentDate->endOfDay())
-                                 ->count();
-            $customersData[] = DB::table('subscription_items')
-                ->select('user_id')
-                ->distinct()
-                ->whereBetween('created_at', [$currentDate->startOfDay(), $currentDate->endOfDay()])
-                ->count();
-            $dailySales = 0;
-            foreach ($subscriptionItems as $item) {
-                if ($item->created_at >= $currentDate->startOfDay() && $item->created_at <= $currentDate->endOfDay()) {
-                    $dailySales += $priceMapping[$item->stripe_price] ?? 0;
-                }
-            }
-            $salesData[] = $dailySales;
-
-            $currentDate->addDay();
-        }
 
         return view('backend.dashboard', [
-            'dates' => $dates,
+            'months' => $months,
             'users' => $usersData,
             'customers' => $customersData,
-            'sales' => $salesData
+            'subscriptionData' => $subscriptionData,
+            'sales' => $salesData,
+            'totalUsers' => $totalUsers,
+            'totalSales' => $totalSales,
+            'totalCustomers' => $totalCustomers
+
         ]);
     }
 
+    private function getMonthlyUsersData()
+    {
+        $usersData = [];
 
+        for ($month = 1; $month <= 12; $month++) {
+            $startDate = Carbon::create(null, $month)->startOfMonth();
+            $endDate = Carbon::create(null, $month)->endOfMonth();
+
+            $usersCount = User::whereBetween('created_at', [$startDate, $endDate])->count();
+            $usersData[] = $usersCount;
+        }
+
+        return $usersData;
+    }
+
+    private function getMonthlyCustomersData()
+    {
+        $customersData = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $startDate = Carbon::create(null, $month)->startOfMonth();
+            $endDate = Carbon::create(null, $month)->endOfMonth();
+
+            $customersCount = DB::table('subscription_items')
+                ->select('user_id')
+                ->distinct()
+                ->whereBetween('created_at', [$startDate, $endDate])
+                ->count();
+
+            $customersData[] = $customersCount;
+        }
+
+        return $customersData;
+    }
+
+    private function getSubscriptionData()
+    {
+        $basicPlanCount = DB::table('subscription_items')
+            ->where('stripe_price', 'price_1PJTO7JncBMXlWz2ZX32QJMG')
+            ->count();
+        $standardPlanCount = DB::table('subscription_items')
+            ->where('stripe_price', 'price_1PJTPKJncBMXlWz2y0ZkBgeH')
+            ->count();
+        $premiumPlanCount = DB::table('subscription_items')
+            ->where('stripe_price', 'price_1PJTQFJncBMXlWz2SEsZtgdB')
+            ->count();
+
+        return [
+            'basic' => $basicPlanCount,
+            'standard' => $standardPlanCount,
+            'premium' => $premiumPlanCount
+        ];
+    }
+
+    private function getMonthlySalesData()
+    {
+        $salesData = [];
+        $priceMapping = [
+            'price_1PJTO7JncBMXlWz2ZX32QJMG' => 20, // basic plan
+            'price_1PJTPKJncBMXlWz2y0ZkBgeH' => 40, // standard plan
+            'price_1PJTQFJncBMXlWz2SEsZtgdB' => 70  // premium plan
+        ];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $startDate = Carbon::create(null, $month)->startOfMonth();
+            $endDate = Carbon::create(null, $month)->endOfMonth();
+
+            $monthlySales = DB::table('subscription_items')
+                ->whereBetween('created_at', [$startDate, $endDate])
+                ->get()
+                ->reduce(function ($total, $item) use ($priceMapping) {
+                    return $total + ($priceMapping[$item->stripe_price] ?? 0);
+                }, 0);
+
+            $salesData[] = $monthlySales;
+        }
+
+        return $salesData;
+    }
+
+    private function getTotalSalesForYear()
+    {
+        $startOfYear = Carbon::now()->startOfYear();
+        $endOfYear = Carbon::now()->endOfYear();
+
+        $priceMapping = [
+            'price_1PJTO7JncBMXlWz2ZX32QJMG' => 20, // basic plan
+            'price_1PJTPKJncBMXlWz2y0ZkBgeH' => 40, // standard plan
+            'price_1PJTQFJncBMXlWz2SEsZtgdB' => 70  // premium plan
+        ];
+
+        $totalSales = DB::table('subscription_items')
+            ->whereBetween('created_at', [$startOfYear, $endOfYear])
+            ->get()
+            ->reduce(function ($total, $item) use ($priceMapping) {
+                return $total + ($priceMapping[$item->stripe_price] ?? 0);
+            }, 0);
+
+        return $totalSales;
+    }
 }
