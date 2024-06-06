@@ -1,12 +1,13 @@
 <x-app-layout>
-    
+
     <!-- About Start -->
     <div class="container-fluid py-5">
         <div class="container">
             <div class="row gx-5">
                 <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
                     <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100 rounded" src="img/aboutt.png" style="object-fit: cover; object-position: right;" >
+                        <img class="position-absolute w-100 h-100 rounded" src="img/aboutt.png"
+                            style="object-fit: cover; object-position: right;">
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -16,12 +17,17 @@
                     </div>
                     <p>
                         Welcome to MediCare Assist, where we are reshaping the landscape of medical assistance.
-                        With timely medication reminders, appointment alerts, and a secure cloud-based patient profile system,
-                        we ensure seamless healthcare management. Say goodbye to lost or damaged documents—our system enables
-                        secure storage and easy access to your medical history. Our dedicated medical assistance team adds
+                        With timely medication reminders, appointment alerts, and a secure cloud-based patient profile
+                        system,
+                        we ensure seamless healthcare management. Say goodbye to lost or damaged documents—our system
+                        enables
+                        secure storage and easy access to your medical history. Our dedicated medical assistance team
+                        adds
                         a personal touch, providing document uploads, setting notifications, and making reminder calls.
-                        Take control of your health with features like daily monitoring of blood sugar and blood pressure levels,
-                        fostering better communication with healthcare professionals. MedCare is not just a service; it's a
+                        Take control of your health with features like daily monitoring of blood sugar and blood
+                        pressure levels,
+                        fostering better communication with healthcare professionals. MedCare is not just a service;
+                        it's a
                         commitment to your well-being.
                     </p>
                     <div class="row g-3 pt-3">
@@ -40,7 +46,8 @@
                         <div class="col-sm-3 col-6">
                             <div class="bg-light text-center rounded-circle py-4">
                                 <i class="fa fa-3x fa-bell text-primary mb-3"></i>
-                                <h6 class="mb-0">Efficient<small class="d-block text-primary">Notifications</small></h6>
+                                <h6 class="mb-0">Efficient<small class="d-block text-primary">Notifications</small>
+                                </h6>
                             </div>
                         </div>
                         <div class="col-sm-3 col-6">

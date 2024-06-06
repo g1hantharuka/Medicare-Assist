@@ -171,9 +171,11 @@ Route::middleware("auth")->group(function () {
     // Route::get('/booking/success', function () {
     //     return view('pages.booking_success');
     // })->name('booking.success');
-});
-//route for dashbaord function in DashboardController
+
+    //route for dashbaord function in DashboardController
 Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');
+});
+
 
 
 
