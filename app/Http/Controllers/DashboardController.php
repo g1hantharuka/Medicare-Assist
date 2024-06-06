@@ -96,9 +96,9 @@ class DashboardController extends Controller
     {
         $salesData = [];
         $priceMapping = [
-            'price_1PJTO7JncBMXlWz2ZX32QJMG' => 20, // basic plan
-            'price_1PJTPKJncBMXlWz2y0ZkBgeH' => 40, // standard plan
-            'price_1PJTQFJncBMXlWz2SEsZtgdB' => 70  // premium plan
+            'price_1PJTO7JncBMXlWz2ZX32QJMG' => 6499, // basic plan
+            'price_1PJTPKJncBMXlWz2y0ZkBgeH' => 11999, // standard plan
+            'price_1PJTQFJncBMXlWz2SEsZtgdB' => 21999  // premium plan
         ];
 
         for ($month = 1; $month <= 12; $month++) {
@@ -124,9 +124,9 @@ class DashboardController extends Controller
         $endOfYear = Carbon::now()->endOfYear();
 
         $priceMapping = [
-            'price_1PJTO7JncBMXlWz2ZX32QJMG' => 20, // basic plan
-            'price_1PJTPKJncBMXlWz2y0ZkBgeH' => 40, // standard plan
-            'price_1PJTQFJncBMXlWz2SEsZtgdB' => 70  // premium plan
+            'price_1PJTO7JncBMXlWz2ZX32QJMG' => 6499, // basic plan
+            'price_1PJTPKJncBMXlWz2y0ZkBgeH' => 11999, // standard plan
+            'price_1PJTQFJncBMXlWz2SEsZtgdB' => 21999  // premium plan
         ];
 
         $totalSales = DB::table('subscription_items')
