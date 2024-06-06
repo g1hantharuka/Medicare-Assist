@@ -81,8 +81,7 @@
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             {{ $Booking->id }}</td>
 
-                                        {{-- bookings status if 0 pending, if 1 comfirmed --}}
-                                        {{-- <td>{{$item->status == '1' ? 'Hidden' : 'Show'}}</td> --}}
+                                        
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             {{ $Booking->status == '1' ? 'Confirmed' : 'Pending' }}</td>

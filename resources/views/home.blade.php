@@ -378,8 +378,7 @@
                         @csrf
                         <div class="row g-3">
                             @auth
-                                {{-- hidden input field name which gets users name --}}
-                                {{-- <input type="hidden" name="name" value="{{ Auth::user()->name }}"> --}}
+
                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                 <div class="col-12 col-sm-6">
                                     <input type="text" name="name" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;" value="{{ Auth::user()->name }}" readonly>
@@ -388,7 +387,7 @@
                                     <input type="email" name="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;" value="{{ Auth::user()->email }}" readonly>
                                 </div>
                             @endauth
-                            {{-- hidden input status which is 0 --}}
+
                             <input type="hidden" name="status" value="0">
                             <div class="col-12 col-sm-6">
                                 <input type="text" class="form-control bg-light border-0 @error('mobile') is-invalid @enderror" name="mobile" placeholder="Your Mobile" style="height: 55px;" value="{{ old('mobile') }}" required>
@@ -408,20 +407,20 @@
                                 @enderror
                             </div>
                             <div class="col-12 col-sm-6">
-                                <div class="date" id="date" data-target-input="nearest">
-                                    <input type="text" name="date" class="form-control bg-light border-0 datetimepicker-input @error('date') is-invalid @enderror" placeholder="Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;" value="{{ old('date') }}" required>
+
+                                    <input type="date" name="date" class="form-control bg-light border-0 datetimepicker-input @error('date') is-invalid @enderror" placeholder="Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;" value="{{ old('date') }}" required>
                                     @error('date')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                </div>
+
                             </div>
                             <div class="col-12 col-sm-6">
-                                <div class="time" id="time" data-target-input="nearest">
-                                    <input type="text" name="time" class="form-control bg-light border-0 datetimepicker-input @error('time') is-invalid @enderror" placeholder="Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;" value="{{ old('time') }}" required>
+
+                                    <input type="time" name="time" class="form-control bg-light border-0 datetimepicker-input @error('time') is-invalid @enderror" placeholder="Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;" value="{{ old('time') }}" required>
                                     @error('time')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                </div>
+                                
                             </div>
                             <div class="col-12">
                                 @auth
@@ -519,24 +518,7 @@
                         <a href="" class="btn btn-primary rounded-pill py-3 px-5 my-2">Apply Now</a>
                     </div>
                 </div>
-                {{-- <div class="bg-light rounded text-center">
-                    <div class="position-relative">
-                        <img class="img-fluid rounded-top" src="img/price-4.jpg" alt="">
-                        <div class="position-absolute w-100 h-100 top-50 start-50 translate-middle rounded-top d-flex flex-column align-items-center justify-content-center" style="background: rgba(29, 42, 77, .8);">
-                            <h3 class="text-white">Call Reminders Package</h3>
-                            <h1 class="display-4 text-white mb-0">
-                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">$</small>199<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Month</small>
-                            </h1>
-                        </div>
-                    </div>
-                    <div class="text-center py-5">
-                        <p>Emergency Medical Treatment</p>
-                        <p>Highly Experienced Doctors</p>
-                        <p>Highest Success Rate</p>
-                        <p>Telephone Service</p>
-                        <a href="" class="btn btn-primary rounded-pill py-3 px-5 my-2">Apply Now</a>
-                    </div>
-                </div> --}}
+
             </div>
         </div>
     </div>

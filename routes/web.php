@@ -4,14 +4,12 @@ use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BookingController;
 use App\Models\Subscription;
 use App\Models\User;
 use App\Models\Plan;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\BookingController;
 use App\Models\Booking;
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -24,150 +22,77 @@ use App\Models\Booking;
 |
 */
 
+// Public Routes
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Authentication Routes
 Route::get('logout', function () {
     return view('/');
 });
 
+// Public Pages Without Controllers
+Route::view('/about', 'pages.about')->name('about');
+Route::view('/contact', 'pages.contact')->name('contact');
+Route::view('/services', 'pages.services')->name('services');
+Route::view('/pricing', 'pages.pricing')->name('pricing');
 
-
-
-Route::get("/", [HomeController::class, 'index']);
-
-
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-
-    Route::middleware([
-        'user.admin'
-    ])->resource(
-        'product-category',
-        \App\Http\Controllers\ProductCategoryController::class
-    );
-
-    Route::middleware([
-        'user.admin'
-    ])->resource(
-        'product',
-        \App\Http\Controllers\ProductController::class
-    );
-
-    Route::middleware([
-        'user.admin'
-    ])->resource(
-        'user',
-        \App\Http\Controllers\UserController::class
-    );
-
-    //routes for stock
-    Route::middleware([
-        'user.admin'
-    ])->resource(
-        'stock',
-        \App\Http\Controllers\StockController::class
-    );
-
-    //routes for subscriptions
-    Route::middleware([
-        'user.admin'
-    ])->resource(
-        'subscription',
-        \App\Http\Controllers\SubscriptionController::class
-    );
-
-    // routes for booking
-    Route::middleware([
-        'user.admin'
-    ])->resource(
-        'booking',
-        \App\Http\Controllers\BookingController::class
-    );
-});
-
-//Route for the products cards showing page
+// Product Routes
 Route::get('/products', [\App\Http\Controllers\ProductController::class, 'showProducts'])->name('products');
+Route::get('/product/{product:slug}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
+Route::get('/category/{slug}', [\App\Http\Controllers\ProductCategoryController::class, 'show'])->name('category.show');
 
-Route::get('/product/{product:slug}', [
-    \App\Http\Controllers\ProductController::class,
-    'show'
-])->name('product.show');
+// Protected Routes
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
 
+    // Dashboard Route
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-Route::get('/category/{slug}', [
-    \App\Http\Controllers\ProductCategoryController::class,
-    'show'
-])->name('category.show');
-
-
-//Routes for the nav bar pages without controllers
-Route::get('/about', function () {
-    return view('pages.about');
-})->name('about');
-
-Route::get('/contact', function () {
-    return view('pages.contact');
-})->name('contact');
-
-Route::get('/services', function () {
-    return view('pages.services');
-})->name('services');
-
-//pricing
-Route::get('/pricing', function () {
-    return view('pages.pricing');
-})->name('pricing');
-
-
-Route::get('plans/{plan}', [
-    \App\Http\Controllers\PlanController::class,
-    'show'
-])->name('plans.show');
-
-
-Route::middleware("auth")->group(function () {
-
-    Route::get('plans/{plan}', [PlanController::class, 'show'])->name("plans.show");
-    Route::post('subscription', [PlanController::class, 'subscribe'])->name("subscription.create");
-
-    Route::get('/users/subscription', function () {
-        return view('user.subscription.index', [
-            'subscriptions' => Subscription::where('user_id', auth()->user()->id)->orderBy('id', 'ASC')->paginate(10),
-            'users' => User::all(),
-            'plans' => Plan::all()
+    // Admin Routes
+    Route::middleware('user.admin')->group(function () {
+        Route::resources([
+            'product-category' => \App\Http\Controllers\ProductCategoryController::class,
+            'product' => \App\Http\Controllers\ProductController::class,
+            'user' => \App\Http\Controllers\UserController::class,
+            'stock' => \App\Http\Controllers\StockController::class,
+            'subscription' => \App\Http\Controllers\SubscriptionController::class,
+            'booking' => \App\Http\Controllers\BookingController::class,
         ]);
     });
 
-    Route::get('/users/booking', function () {
-        return view('user.booking.index', [
-            'bookings' => Booking::where('user_id', auth()->user()->id)->orderBy('id', 'ASC')->paginate(10),
-            'users' => User::all(),
-            // 'plans' => Plan::all()
-        ]);
+    // User Routes
+    Route::prefix('users')->group(function () {
+        Route::get('/subscription', function () {
+            return view('user.subscription.index', [
+                'subscriptions' => Subscription::where('user_id', auth()->user()->id)->orderBy('id', 'ASC')->paginate(10),
+                'users' => User::all(),
+                'plans' => Plan::all()
+            ]);
+        });
+
+        Route::get('/booking', function () {
+            return view('user.booking.index', [
+                'bookings' => Booking::where('user_id', auth()->user()->id)->orderBy('id', 'ASC')->paginate(10),
+                'users' => User::all(),
+            ]);
+        });
     });
 
-    //route forpages.subscription_success
+    // Plan Routes
+    Route::prefix('plans')->group(function () {
+        Route::get('{plan}', [PlanController::class, 'show'])->name('plans.show');
+        Route::post('subscription', [PlanController::class, 'subscribe'])->name('subscription.create');
+    });
+
+    // other Routes
     Route::get('/pages/subscription_success', function () {
         return view('pages.subscription_success');
     })->name('pages.subscription_success');
 
 
-    //route for dashbaord function in DashboardController
-    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 });
 
 
-
-//route for booking create booking controller
 Route::post('/booking/create', [BookingController::class, 'store'])->name('booking.create');
-
-
-//route for booking_success
-Route::get('/booking/success', function () {
+Route::get('/success', function () {
     return view('pages.booking_success');
 })->name('booking.status');

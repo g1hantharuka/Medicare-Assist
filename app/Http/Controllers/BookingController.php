@@ -33,6 +33,7 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $validated = $request->validate([
 
             // 'user_id' => 'required|exists:users,id',
@@ -45,6 +46,8 @@ class BookingController extends Controller
             'status' => 'required|string|max:255',
 
         ]);
+
+        // $validated = $request->all();
 
         Booking::create($validated);
 

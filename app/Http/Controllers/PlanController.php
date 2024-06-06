@@ -28,17 +28,7 @@ class PlanController extends Controller
         return view('pages.subscription', compact('plan', 'intent'));
     }
 
-    // public function subscription(Request $request)
-    // {
-    //     $plan = Plan::find($request->plan);
 
-    //     $subscription = $request->user()->newSubscription($request->plan, $plan->stripe_plan)
-    //                     ->create($request->token);
-
-    //     // return view("pages.subscription_success");
-    //     // pass the plan to the view
-    //     return view('pages.subscription_success', compact('plan'));
-    // }
 
 
 
@@ -58,7 +48,7 @@ public function subscribe(Request $request)
 
         } catch (\Exception $e) {
 
-            // Handle errors, possibly return to the form with error messages
+           
             return redirect()->route('pages.subscription_success')->withErrors(['msg' => $e->getMessage()]);
         }
     }

@@ -18,9 +18,8 @@
                     <form method="post" action="{{ route('booking.create') }}">
                         @csrf
                         <div class="row g-3">
+
                             @auth
-                                {{-- hidden input field name which gets users name --}}
-                                {{-- <input type="hidden" name="name" value="{{ Auth::user()->name }}"> --}}
                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
                                 <div class="col-12 col-sm-6">
                                     <input type="text" name="name" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;" value="{{ Auth::user()->name }}" readonly>
@@ -29,14 +28,16 @@
                                     <input type="email" name="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;" value="{{ Auth::user()->email }}" readonly>
                                 </div>
                             @endauth
-                            {{-- hidden input status which is 0 --}}
+
                             <input type="hidden" name="status" value="0">
+
                             <div class="col-12 col-sm-6">
                                 <input type="text" class="form-control bg-light border-0 @error('mobile') is-invalid @enderror" name="mobile" placeholder="Your Mobile" style="height: 55px;" value="{{ old('mobile') }}" required>
                                 @error('mobile')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
+
                             <div class="col-12 col-sm-6">
                                 <select class="form-control bg-light border-0 @error('gender') is-invalid @enderror" name="gender" style="height: 55px;" required>
                                     <option value="">Select Gender</option>
@@ -49,20 +50,20 @@
                                 @enderror
                             </div>
                             <div class="col-12 col-sm-6">
-                                <div class="date" id="date" data-target-input="nearest">
-                                    <input type="text" name="date" class="form-control bg-light border-0 datetimepicker-input @error('date') is-invalid @enderror" placeholder="Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;" value="{{ old('date') }}" required>
+                              
+                                    <input type="date" name="date" class="form-control bg-light border-0 datetimepicker-input @error('date') is-invalid @enderror" placeholder="Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;" value="{{ old('date') }}" required>
                                     @error('date')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                </div>
+
                             </div>
                             <div class="col-12 col-sm-6">
-                                <div class="time" id="time" data-target-input="nearest">
-                                    <input type="text" name="time" class="form-control bg-light border-0 datetimepicker-input @error('time') is-invalid @enderror" placeholder="Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;" value="{{ old('time') }}" required>
+
+                                    <input type="time" name="time" class="form-control bg-light border-0 datetimepicker-input @error('time') is-invalid @enderror" placeholder="Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;" value="{{ old('time') }}" required>
                                     @error('time')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
-                                </div>
+
                             </div>
                             <div class="col-12">
                                 @auth
