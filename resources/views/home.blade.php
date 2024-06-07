@@ -1,128 +1,5 @@
 <x-app-layout>
 
-{{-- <html lang="en"> --}}
-
-{{-- <head>
-    <meta charset="utf-8">
-    <title>MEDCARE ASSIST </title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/5df66a38fb.js" crossorigin="anonymous"></script>
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-</head>
-
-<body>
-    <!-- Topbar Start -->
-    <div class="container-fluid py-2 border-bottom d-none d-lg-block">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-lg-start mb-2 mb-lg-0">
-                    <div class="d-inline-flex align-items-center">
-                        <a class="text-decoration-none text-body pe-3" href=""><i class="bi bi-telephone me-2"></i>+11270 2966</a>
-                        <span class="text-body">|</span>
-                        <a class="text-decoration-none text-body px-3" href=""><i class="bi bi-envelope me-2"></i>medcareconnect@gmail.com</a>
-                    </div>
-                </div>
-                <div class="col-md-6 text-center text-lg-end">
-                    <div class="d-inline-flex align-items-center">
-                        <a class="text-body px-2" href="">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a class="text-body px-2" href="">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a class="text-body px-2" href="">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a class="text-body px-2" href="">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a class="text-body ps-2" href="">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Topbar End -->
-
-
-    <!-- Navbar Start -->
-    <div class="container-fluid sticky-top bg-white shadow-sm">
-        <div class="container">
-            <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="index.html" class="navbar-brand">
-                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>MedCare</h1>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Services</a>
-                        <a href="price.html" class="nav-item nav-link">Pricing</a>
-                        <!-- <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                                <a href="detail.html" class="dropdown-item">Blog Detail</a>
-                                <a href="team.html" class="dropdown-item">The Team</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="appointment.html" class="dropdown-item">Appointment</a>
-                                <a href="search.html" class="dropdown-item">Search</a>
-                            </div>
-                        </div> -->
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-
-                        <!-- Login and Registration -->
-                            @if (Route::has('login'))
-
-                            <!-- <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10"> -->
-                                @auth
-                                    <a href="{{ url('/dashboard') }}" class="nav-item nav-link ">My Profile</a>
-                                @else
-                                    <a href="{{ route('login') }}" class="nav-item nav-link ">Log in</a>
-
-                                    @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="nav-item nav-link ">Register</a>
-                                    @endif
-                                @endauth
-                            <!-- </div> -->
-                        @endif
-
-
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <!-- Navbar End --> --}}
-
-
     <!-- Hero Start -->
     <div class="container-fluid bg-primary py-5 mb-5 hero-header">
         <div class="container py-5">
@@ -131,8 +8,8 @@
                     <h5 class="d-inline-block  text-uppercase " style="color: whitesmoke">Welcome To MediCare Assist</h5>
                     <h1 class="display-1 text-white mb-md-4">Best Medical Assistance Solution for your loved ones</h1>
                     <div class="pt-2">
-                        <a href="" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Appointment</a>
-                        <a href="" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">Packages</a>
+                        <a href=" {{ url('/contact') }}" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2">Appointment</a>
+                        <a href="{{ url('/pricing') }}" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2">Packages</a>
                     </div>
                 </div>
             </div>
@@ -285,7 +162,7 @@
 
 
     <!-- Appointment Start -->
-    <div class="container-fluid bg-primary my-5 py-5">
+    {{-- <div class="container-fluid bg-primary my-5 py-5">
         <div class="container py-5">
             <div class="row gx-5">
                 <div class="col-lg-6 mb-5 mb-lg-0">
@@ -300,69 +177,159 @@
                 <div class="col-lg-6">
                     <div class="bg-white text-center rounded p-5">
                         <h1 class="mb-4">Book An Appointment</h1>
-                        <form>
+                        <form method="post" action="{{ route('booking.create') }}">
+                            @csrf
+
                             <div class="row g-3">
-                                {{-- <div class="col-12 col-sm-6">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
-                                        <option selected>Choose Department</option>
-                                        <option value="1">Department 1</option>
-                                        <option value="2">Department 2</option>
-                                        <option value="3">Department 3</option>
-                                    </select>
-                                </div> --}}
-                                {{-- <div class="col-12 col-sm-6">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
-                                        <option selected>Select Doctor</option>
-                                        <option value="1">Doctor 1</option>
-                                        <option value="2">Doctor 2</option>
-                                        <option value="3">Doctor 3</option>
-                                    </select>
-                                </div> --}}
+
+                                @auth
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+
+
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;" value="{{ Auth::user()->name }}" readonly>
+                                </div>
+
+                                    <div class="col-12 col-sm-6">
+                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;" value="{{ Auth::user()->email }}" readonly>
+                                </div>
+                                @endauth
+
+
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Mobile " style="height: 55px;" required>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Mobile " style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Gender" style="height: 55px;">
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Gender" style="height: 55px;" required>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="date" id="date" data-target-input="nearest">
                                         <input type="text"
                                             class="form-control bg-light border-0 datetimepicker-input"
-                                            placeholder="Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
+                                            placeholder="Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="time" id="time" data-target-input="nearest">
                                         <input type="text"
                                             class="form-control bg-light border-0 datetimepicker-input"
-                                            placeholder="Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;">
+                                            placeholder="Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;" required>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit" style="background-color: #13C5DD">Make An Appointment</button>
+                                    @auth
+                                        <button class="btn btn-primary w-100 py-3" type="submit" style="background-color: #13C5DD">Make An Appointment</button>
+
+                                    @endauth
+                                    @guest
+                                        <a href="{{ route('login') }}" class="btn btn-primary w-100 py-3" style="background-color: #13C5DD">Log In To Make An Appointment</a>
+                                    @endguest
+
+
                                 </div>
                             </div>
                         </form>
+
+
                     </div>
                 </div>
             </div>
         </div>
+    </div> --}}
+<div class="container-fluid bg-primary my-5 py-5">
+    <div class="container py-5">
+        <div class="row gx-5">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="mb-4">
+                    <h5 class="d-inline-block text-white text-uppercase">Appointment</h5>
+                    <h1 class="display-4">Make An Appointment For Your Loved One</h1>
+                </div>
+                <p class="text-white mb-5">To gain further insights or inquire about our comprehensive medical assistance services, we encourage you to schedule an appointment with one of our dedicated medical assistants. Whether you seek information on medication management, health record organization, or personalized healthcare plans, our team is ready to assist you.</p>
+                <a class="btn btn-dark rounded-pill py-3 px-5 me-3" href="">Packages</a>
+                <a class="btn btn-outline-dark rounded-pill py-3 px-5" href="">Read More</a>
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-white text-center rounded p-5">
+                    <h1 class="mb-4">Book An Appointment</h1>
+                    <form method="post" action="{{ route('booking.create') }}">
+                        @csrf
+                        <div class="row g-3">
+                            @auth
+
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                <div class="col-12 col-sm-6">
+                                    <input type="text" name="name" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;" value="{{ Auth::user()->name }}" readonly>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <input type="email" name="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;" value="{{ Auth::user()->email }}" readonly>
+                                </div>
+                            @endauth
+
+                            <input type="hidden" name="status" value="0">
+                            <div class="col-12 col-sm-6">
+                                <input type="text" class="form-control bg-light border-0 @error('mobile') is-invalid @enderror" name="mobile" placeholder="Your Mobile" style="height: 55px;" value="{{ old('mobile') }}" required>
+                                @error('mobile')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <select class="form-control bg-light border-0 @error('gender') is-invalid @enderror" name="gender" style="height: 55px;" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
+                                    <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
+                                    <option value="Other" {{ old('gender') == 'Other' ? 'selected' : '' }}>Other</option>
+                                </select>
+                                @error('gender')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-12 col-sm-6">
+
+                                    <input type="date" name="date" class="form-control bg-light border-0 datetimepicker-input @error('date') is-invalid @enderror" placeholder="Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;" value="{{ old('date') }}" required>
+                                    @error('date')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+
+                            </div>
+                            <div class="col-12 col-sm-6">
+
+                                    <input type="time" name="time" class="form-control bg-light border-0 datetimepicker-input @error('time') is-invalid @enderror" placeholder="Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;" value="{{ old('time') }}" required>
+                                    @error('time')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+
+                            </div>
+                            <div class="col-12">
+                                @auth
+                                    <button class="btn btn-primary w-100 py-3" type="submit" style="background-color: #13C5DD">Make An Appointment</button>
+                                @endauth
+                                @guest
+                                    <a href="{{ route('login') }}" class="btn btn-primary w-100 py-3" style="background-color: #13C5DD">Log In To Make An Appointment</a>
+                                @endguest
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
+
+
+
+
+{{-- </div> --}}
+
     <!-- Appointment End -->
 
 
     <!-- Pricing Plan Start -->
-    {{-- <div class="container-fluid py-5">
-        <div class="container">
+    <div class="container-fluid py-5 " style="padding-bottom: 20px;">
+        <div class="container ">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
                 <h5 class="d-inline-block text-primary text-uppercase border-bottom border-0">Medical Packages</h5>
-                <h1 class="display-4">Awesome Medical Programs</h1>
+                <h1 class="display-4">Excellent Medical Packages</h1>
             </div>
             <div class="owl-carousel price-carousel position-relative" style="padding: 0 45px 45px 45px;">
                 <div class="bg-light rounded text-center">
@@ -371,15 +338,17 @@
                         <div class="position-absolute w-100 h-100 top-50 start-50 translate-middle rounded-top d-flex flex-column align-items-center justify-content-center" style="background: rgba(29, 42, 77, .8);">
                             <h3 class="text-white">Basic Plan</h3>
                             <h1 class="display-4 text-white mb-0">
-                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">$</small>49<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Year</small>
+                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">Rs</small>6,499<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Month</small>
                             </h1>
                         </div>
                     </div>
                     <div class="text-center py-5">
-                        <p>Emergency Medical Treatment</p>
-                        <p>Highly Experienced Doctors</p>
-                        <p>Highest Success Rate</p>
-                        <p>Telephone Service</p>
+                        <p class="mb-2">App Medication Reminders</p>
+                        <p class="mb-2">App Appointment Reminders</p>
+                        <p class="mb-2">Patient Profile System</p>
+                        <p class="mb-2">Self-Monitoring Logs</p>
+                        <p class="mb-2">Basic Customer Support</p>
+
                         <a href="" class="btn btn-primary rounded-pill py-3 px-5 my-2">Apply Now</a>
                     </div>
                 </div>
@@ -387,17 +356,20 @@
                     <div class="position-relative">
                         <img class="img-fluid rounded-top" src="img/price-2.jpg" alt="">
                         <div class="position-absolute w-100 h-100 top-50 start-50 translate-middle rounded-top d-flex flex-column align-items-center justify-content-center" style="background: rgba(29, 42, 77, .8);">
-                            <h3 class="text-white">Premium Plan</h3>
+                            <h3 class="text-white">Standard Plan</h3>
                             <h1 class="display-4 text-white mb-0">
-                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">$</small>99<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Year</small>
+                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">Rs</small>11,999<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Month</small>
                             </h1>
                         </div>
                     </div>
                     <div class="text-center py-5">
-                        <p>Emergency Medical Treatment</p>
-                        <p>Highly Experienced Doctors</p>
-                        <p>Highest Success Rate</p>
-                        <p>Telephone Service</p>
+                        <p class="font-bold mb-3">Includes everything in the Basic Plan, Plus:</p>
+                        <p class="mb-2">SMS Reminders</p>
+                        <p class="mb-2">Enhanced Customer Support</p>
+                        <p class="mb-2">Document Management Assistance</p>
+                        <p class="mb-2">Monthly Summary Reports</p>
+                        <p class="mb-2">Comprehensive Health Monitoring</p>
+
                         <a href="" class="btn btn-primary rounded-pill py-3 px-5 my-2">Apply Now</a>
                     </div>
                 </div>
@@ -405,41 +377,30 @@
                     <div class="position-relative">
                         <img class="img-fluid rounded-top" src="img/price-3.jpg" alt="">
                         <div class="position-absolute w-100 h-100 top-50 start-50 translate-middle rounded-top d-flex flex-column align-items-center justify-content-center" style="background: rgba(29, 42, 77, .8);">
-                            <h3 class="text-white">Medicene Delivery</h3>
+                            <h3 class="text-white">Premium Plan</h3>
                             <h1 class="display-4 text-white mb-0">
-                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">$</small>149<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Year</small>
+                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">Rs</small>21,999<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Month</small>
                             </h1>
                         </div>
                     </div>
                     <div class="text-center py-5">
-                        <p>Emergency Medical Treatment</p>
-                        <p>Highly Experienced Doctors</p>
-                        <p>Highest Success Rate</p>
-                        <p>Telephone Service</p>
+                        <p class="font-bold mb-3">Includes everything in the Standard Plan, Plus:</p>
+                        <p class="mb-2">Personalized Voice Call Reminders</p>
+                        <p class="mb-2">Medicine Delivery Service</p>
+                        <p class="mb-2">Caregiver and Pharmacy Notifications</p>
+                        <p class="mb-2">Family Access</p>
+                        <p class="mb-2">Priority Customer Support</p>
+
+
                         <a href="" class="btn btn-primary rounded-pill py-3 px-5 my-2">Apply Now</a>
                     </div>
                 </div>
-                <div class="bg-light rounded text-center">
-                    <div class="position-relative">
-                        <img class="img-fluid rounded-top" src="img/price-4.jpg" alt="">
-                        <div class="position-absolute w-100 h-100 top-50 start-50 translate-middle rounded-top d-flex flex-column align-items-center justify-content-center" style="background: rgba(29, 42, 77, .8);">
-                            <h3 class="text-white">Call Reminders Package</h3>
-                            <h1 class="display-4 text-white mb-0">
-                                <small class="align-top fw-normal" style="font-size: 22px; line-height: 45px;">$</small>199<small class="align-bottom fw-normal" style="font-size: 16px; line-height: 40px;">/ Year</small>
-                            </h1>
-                        </div>
-                    </div>
-                    <div class="text-center py-5">
-                        <p>Emergency Medical Treatment</p>
-                        <p>Highly Experienced Doctors</p>
-                        <p>Highest Success Rate</p>
-                        <p>Telephone Service</p>
-                        <a href="" class="btn btn-primary rounded-pill py-3 px-5 my-2">Apply Now</a>
-                    </div>
-                </div>
+
             </div>
         </div>
-    </div> --}}
+    </div>
+
+    <
     <!-- Pricing Plan End -->
 
 
@@ -540,7 +501,7 @@
 
 
     <!-- Testimonial Start -->
-    <div class="container-fluid py-5">
+    {{-- <div class="container-fluid py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5" style="max-width: 500px;">
                 <h5 class="d-inline-block text-primary text-uppercase">Testimonial</h5>
@@ -559,7 +520,7 @@
                             <p class="fs-4 fw-normal">"The medical assistance service has been a game-changer for me, seamlessly organizing my health records and providing timely reminders, making healthcare management a breeze."</p>
                             <hr class="w-25 mx-auto">
                             <h3 style="padding-top: 15px">Tilini Nishani</h3>
-                            {{-- <h6 class="fw-normal text-primary mb-3">Profession</h6> --}}
+
                         </div>
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
@@ -571,7 +532,7 @@
                             <p class="fs-4 fw-normal">"As a caregiver, the comprehensive patients' profile system has been invaluable, allowing me to track and update medical information effortlessly, ensuring the best care for my loved ones."</p>
                             <hr class="w-25 mx-auto">
                             <h3 style="padding-top: 15px" >Hirusha Thilothma</h3>
-                            {{-- <h6 class="fw-normal text-primary mb-3">Profession</h6> --}}
+
                         </div>
                         <div class="testimonial-item text-center">
                             <div class="position-relative mb-5">
@@ -583,14 +544,14 @@
                             <p class="fs-4 fw-normal">"The daily health record tracking service has transformed my approach to wellness, offering a user-friendly platform to monitor my health metrics and fostering a proactive and informed lifestyle."</p>
                             <hr class="w-25 mx-auto">
                             <h3 style="padding-top: 15px" >Siyumi Dinethma</h3>
-                            {{-- <h6 class="fw-normal text-primary mb-3">Profession</h6> --}}
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
+    </div> --}}
+
     <!-- Testimonial End -->
 
 

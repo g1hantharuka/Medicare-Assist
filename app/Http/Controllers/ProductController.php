@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\ProductCategory;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
@@ -18,9 +20,15 @@ class ProductController extends Controller
         return view('admin.product.index', ['product' => $product]);
 
 
-        // return view('admin.product.index', [
-        //     'product' => Product::orderBy('id', 'ASC')->paginate(10)
-        // ]);
+
+    }
+
+    // function to display all the products as cards in the products page
+    public function showProducts()
+    {
+        $products = Product::all();
+        return view('admin.product.pharmacy', compact('products'));
+
     }
 
     /**
@@ -31,6 +39,7 @@ class ProductController extends Controller
         return view('admin.product.form', [
 
             'product' => (new Product()),
+            'categories' => ProductCategory::all(),
 
 
         ]);
@@ -39,11 +48,32 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProductRequest $request)
+    public function store(Request $request)
     {
-        (new Product())->create($request->all());
 
-        return redirect()->route('admin.product.index');
+        $validated = $request->validate([
+            'name' => 'required|unique:products,name',
+            'slug' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+            'price' => 'required',
+            'product_category_id' => 'required',
+
+        ]);
+
+
+        if ($request->hasFile('image')){
+            $file = $request->file('image');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('uploads/products/', $filename);
+
+            $validated['image'] = $filename;
+
+        }
+
+        Product::create($validated);
+
+        return redirect()->route('product.index')->with('success', 'Product successfully created!');
     }
 
     /**
@@ -51,7 +81,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('admin.product.show', [
+            'product' => $product
+        ]);
     }
 
     /**
@@ -61,7 +93,8 @@ class ProductController extends Controller
     {
         return view('admin.product.form', [
             'product' => $product,
-            // 'roles' => Role::cases()
+            'categories' => ProductCategory::all(),
+
         ]);
     }
 
@@ -70,17 +103,33 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $validated = $request->validate([
-            'name' => 'required',
-            'slug' => 'required'
-            // 'email' => 'required|email',
-            // 'role' => 'required'
-        ]);
+    // Validate the request data, excluding the image initially
+    $validated = $request->validate([
+        'name' => 'required',
+        'slug' => 'required',
+        'description' => 'required',
+        'image' => 'nullable|image',
+        'price' => 'required',
+        'product_category_id' => 'required',
+    ]);
 
-        $product->update($validated);
 
-        return redirect()->route('product.index')->with('success', 'Product successfully updated!');
+    if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        $filename = time() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('uploads/products'), $filename); // Use public_path for correct directory
+        $validated['image'] = $filename; // Store the relative path
+
+    } else {
+        // If no new image is uploaded, retain the old image
+        $validated['image'] = $product->image;
     }
+
+    $product->update($validated);
+
+    return redirect()->route('product.index')->with('success', 'Product successfully updated!');
+    }
+
 
     /**
      * Remove the specified resource from storage.

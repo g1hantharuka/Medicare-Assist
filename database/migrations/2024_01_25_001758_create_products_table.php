@@ -20,13 +20,9 @@ return new class extends Migration
 
             $table->longText('description')->nullable();
 
-            $table ->foreignId('product_category_id');
+            $table ->foreignId('product_category_id')->default(1);
+            // $table->foreignId('product_category_id')->constrained()->onDelete('cascade');
 
-
-            // ->foreignId('parent_id')
-            // ->nullable()
-            // ->constrained('product_category_id', 'id')
-            // ->nullOnDelete();
 
             $table->boolean('status')->default(true);
 
@@ -37,6 +33,11 @@ return new class extends Migration
             $table->longText('meta_keywords')->nullable();
 
             $table->timestamps();
+
+            //image
+            $table->string('image')->nullable();
+
+            $table->decimal('price', 10, 2)->default(5.00);
         });
     }
 

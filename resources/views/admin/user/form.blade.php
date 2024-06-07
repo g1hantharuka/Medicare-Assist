@@ -1,15 +1,29 @@
-<x-app-layout>
-    <div class="container mx-auto mt-1">
+@extends('backend.layouts.app')
+
+@section('content')
+
+<section id="main" class="section">
+
+    <div class="container ">
         <div class="space-y-10 divide-y divide-gray-900/10">
 
             <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
                 <div class="px-4 sm:px-0">
+                    @if($user->id)
                     <h2 class="text-base font-semibold leading-7 text-gray-900">
                         Update User
                     </h2>
                     <p class="mt-1 text-sm leading-6 text-gray-600">
                         Update the user's details.
                     </p>
+                    @else
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">
+                        Create User
+                    </h2>
+                    <p class="mt-1 text-sm leading-6 text-gray-600">
+                        Create a new user.
+                    </p>
+                    @endif
                 </div>
 
                 <form method="post"
@@ -95,7 +109,10 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-end gap-x-6 border-t border-gray-900/10 px-4 py-4 sm:px-8">
-                        <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
+                        {{-- <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button> --}}
+                        {{-- cancell button which returns the user to view all users --}}
+                        <a href="{{ route('user.index') }}"
+                            class="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700">Cancel</a>
                         <button type="submit"
                             class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
                     </div>
@@ -104,4 +121,4 @@
 
         </div>
     </div>
-</x-app-layout>
+</section>

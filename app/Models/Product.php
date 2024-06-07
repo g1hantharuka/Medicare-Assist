@@ -18,10 +18,24 @@ class Product extends Model
         'meta_title',
         'meta_description',
         'meta_keywords',
+        //image
+        'image',
+        'price',
+
     ];
 
     public function category()
     {
         return $this->belongsTo(ProductCategory::class, 'product_category_id');
+    }
+
+    public function stocks(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Stock::class);
+    }
+
+    public function stock()
+    {
+        return $this->hasOne(Stock::class);
     }
 }

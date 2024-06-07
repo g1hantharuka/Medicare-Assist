@@ -13,13 +13,9 @@ return new class extends Migration
     {
         Schema::create('product_categories', function (Blueprint $table) {
             $table->id();
-
             $table->string('name')->unique();
-
             $table->string('slug')->unique();
-
             $table->longText('description')->nullable();
-
             $table
             ->foreignId('parent_id')
             ->nullable()
@@ -27,11 +23,6 @@ return new class extends Migration
             ->nullOnDelete();
 
             $table->boolean('status')->default(true);
-
-            // $table->string('meta_title')->nullable();
-            // $table->longText('meta_description')->nullable();
-            // $table->longText('meta_keywords')->nullable();
-
             $table->timestamps();
         });
     }

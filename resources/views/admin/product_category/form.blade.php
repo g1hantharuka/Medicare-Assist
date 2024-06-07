@@ -1,15 +1,29 @@
-<x-app-layout>
-    <div class="container mx-auto mt-1">
+@extends('backend.layouts.app')
+
+@section('content')
+
+<section id="main" class="section">
+
+    <div class="container ">
         <div class="space-y-10 divide-y divide-gray-900/10">
 
             <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
                 <div class="px-4 sm:px-0">
+                    @if($productCategory->id)
                     <h2 class="text-base font-semibold leading-7 text-gray-900">
-                        Update Product category
+                        Update Product Category
                     </h2>
                     <p class="mt-1 text-sm leading-6 text-gray-600">
                         Update the product category details.
                     </p>
+                    @else
+                    <h2 class="text-base font-semibold leading-7 text-gray-900">
+                        Create Product category
+                    </h2>
+                    <p class="mt-1 text-sm leading-6 text-gray-600">
+                        Create a new product category.
+                    </p>
+                    @endif
                 </div>
 
                 <form method="post"
@@ -125,4 +139,4 @@
 
         </div>
     </div>
-</x-app-layout>
+</section>

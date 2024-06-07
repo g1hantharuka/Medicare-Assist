@@ -3,7 +3,8 @@
 
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            {{-- <x-authentication-card-logo /> --}}
+            <img src="/img/logoM.png" alt="Logo" style="width: 120px; height: auto; padding-top:10px; margin-top:-50px">
         </x-slot>
 
         <x-validation-errors class="mb-4" />

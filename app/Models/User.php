@@ -11,6 +11,8 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use App\Enums\Role;
+//billable
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
@@ -19,6 +21,9 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    //use billable
+    use Billable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -62,4 +67,16 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    //subscription relationship
+    // public function subscriptions()
+    // {
+    //     return $this->hasMany(Subscription::class);
+    // }
+
+    //booking relationship
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
 }
