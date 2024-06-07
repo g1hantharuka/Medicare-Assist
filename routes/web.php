@@ -41,6 +41,7 @@ Route::get('/products', [\App\Http\Controllers\ProductController::class, 'showPr
 Route::get('/product/{product:slug}', [\App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
 Route::get('/category/{slug}', [\App\Http\Controllers\ProductCategoryController::class, 'show'])->name('category.show');
 
+
 // Protected Routes
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
 
@@ -51,12 +52,20 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::middleware('user.admin')->group(function () {
         Route::resources([
             'product-category' => \App\Http\Controllers\ProductCategoryController::class,
-            'product' => \App\Http\Controllers\ProductController::class,
             'user' => \App\Http\Controllers\UserController::class,
             'stock' => \App\Http\Controllers\StockController::class,
             'subscription' => \App\Http\Controllers\SubscriptionController::class,
             'booking' => \App\Http\Controllers\BookingController::class,
         ]);
+
+        //product controller index route
+        Route::get('/index', [\App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
+        Route::get('/create', [\App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
+        Route::post('/product/store', [\App\Http\Controllers\ProductController::class, 'store'])->name('product.store');
+        Route::get('/product/{product}', [\App\Http\Controllers\ProductController::class, 'edit'])->name('product.edit');
+        Route::put('/product/{product}', [\App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
+        Route::delete('/product/{product}', [\App\Http\Controllers\ProductController::class, 'destroy'])->name('product.destroy');
+
     });
 
     // User Routes

@@ -26,7 +26,7 @@
 
             <div class="sm:flex sm:items-center ">
                 <div class="sm:flex-auto">
-                    <h1 class="text-base font-semibold leading-6 text-gray-900">Subscriptions</h1>
+                    <h1 class="text-base font-semibold leading-6 text-gray-900">My Subscriptions</h1>
                     <p class="mt-2 text-sm text-gray-700">
                         A list of all the subscriptions including their id, user, plan, status, date, time and actions.
                     </p>

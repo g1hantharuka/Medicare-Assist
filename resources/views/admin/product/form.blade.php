@@ -107,12 +107,13 @@
                                 @enderror
 
                             </div>
-                            <div class="col-span-full">
+                            {{-- <div class="col-span-full">
                                 <label for="description" class="block text-sm font-medium leading-6 text-gray-900">
                                     Description
                                 </label>
                                 <div class="mt-2">
                                     <input id="description" name="description" rows="3"
+
                                         value="{{ old('description', $product->description) }}"
                                         class="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                                 </div>
@@ -125,7 +126,25 @@
                                     </p>
                                 @enderror
 
-                            </div>
+                            </div> --}}
+                            <div class="col-span-full">
+    <label for="description" class="block text-sm font-medium leading-6 text-gray-900">
+        Description
+    </label>
+    <div class="mt-2">
+        <textarea id="description" name="description" rows="3"
+            class="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">{{ old('description', $product->description) }}</textarea>
+    </div>
+    <p class="mt-3 text-sm leading-6 text-gray-600">
+        Description of the product.
+    </p>
+    @error('description')
+        <p class="mt-3 text-sm leading-6 text-red-600">
+            {{ $message }}
+        </p>
+    @enderror
+</div>
+
                             {{--    Product category selection field --}}
                             <div class="col-span-full">
                                 <label for="product_category_id" class="block text-sm font-medium leading-6 text-gray-900">
@@ -158,6 +177,9 @@
                                 <label for="image" class="block text-sm font-medium leading-6 text-gray-900">
                                     Image
                                 </label>
+                                @if($product->image)
+                                <img src="/uploads/products/{{$product->image}}" alt="product image" class="w-30 h-20 object-cover rounded-md">
+                                @endif
                                 <div class="mt-2">
                                     <input id="image" name="image" type="file"
                                         class="block w-full rounded-md border-0 py-1.5 pl-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />

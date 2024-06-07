@@ -26,7 +26,7 @@
 
             <div class="sm:flex sm:items-center ">
                 <div class="sm:flex-auto">
-                    <h1 class="text-base font-semibold leading-6 text-gray-900">Bookings</h1>
+                    <h1 class="text-base font-semibold leading-6 text-gray-900">My Bookings</h1>
                     <p class="mt-2 text-sm text-gray-700">
                         A list of all the bookings including their id, status, email, gender, date, time and actions.
                     </p>
@@ -81,7 +81,7 @@
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             {{ $Booking->id }}</td>
 
-                                        
+
                                         <td
                                             class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
                                             {{ $Booking->status == '1' ? 'Confirmed' : 'Pending' }}</td>

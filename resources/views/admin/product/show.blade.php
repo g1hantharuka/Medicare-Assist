@@ -1,9 +1,12 @@
 <x-app-layout>
 
-<section class="text-gray-700 body-font overflow-hidden bg-white" style="margin-top: -60px">
-  <div class="container px-5 py-24 mx-auto">
+
+<section class="text-gray-700 body-font overflow-hidden bg-white d-flex align-items-center justify-content-center" style="height: 100vh;">
+  <div class="container px-5 py-24 mx-auto ">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
-      <img alt="Medicine Image" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src="/uploads/products/{{$product->image}}">
+
+      <img alt="Medicine Image" class="lg:w-1/2 w-full  object-center rounded border border-gray-200" src="/uploads/products/{{$product->image}}" style="width: 450px; height: 300px;">
+
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
 
 

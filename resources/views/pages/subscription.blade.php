@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="font-[sans-serif] bg-white p-4 pt-10 pb-10">
+    <div class="font-[sans-serif] bg-white p-4 pt-10 pb-10 d-flex align-items-center justify-content-center" style="height: 100vh;">
       <div class="md:max-w-5xl max-w-xl mx-auto">
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="lg:col-span-2 max-md:order-1">
@@ -9,7 +9,7 @@
 
             <form id="payment-form" class="mt-8 max-w-lg" method="POST" action="{{ route('subscription.create') }}">
                 @csrf
-                {{-- Hidden input field to pass plan which is plan id --}}
+               
                 <input type="hidden" name="plan" value="{{ $plan->id }}">
                 <input type="hidden" name="token" id="payment-token">
 

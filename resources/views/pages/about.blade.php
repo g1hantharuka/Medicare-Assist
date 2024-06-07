@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <!-- About Start -->
-    <div class="container-fluid py-5">
+    <div class="container-fluid py-5 d-flex align-items-center justify-content-center" style="height: 100vh;">
         <div class="container">
             <div class="row gx-5">
                 <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">

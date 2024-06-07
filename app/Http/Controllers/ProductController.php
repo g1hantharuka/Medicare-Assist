@@ -28,9 +28,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return view('admin.product.pharmacy', compact('products'));
-        // return view('admin.product.show', [
-        //     'products' => Product::paginate(10)
-        // ]);
+
     }
 
     /**
@@ -41,7 +39,6 @@ class ProductController extends Controller
         return view('admin.product.form', [
 
             'product' => (new Product()),
-            //all product categories
             'categories' => ProductCategory::all(),
 
 
@@ -54,8 +51,6 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-
-        // return redirect()->route('admin.product.index');
         $validated = $request->validate([
             'name' => 'required|unique:products,name',
             'slug' => 'required',
@@ -71,7 +66,6 @@ class ProductController extends Controller
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('uploads/products/', $filename);
-            // $post->image = $filename;
 
             $validated['image'] = $filename;
 

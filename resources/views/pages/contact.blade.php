@@ -1,6 +1,7 @@
 <x-app-layout>
     <!-- Appointment Start -->
-<div class="container-fluid bg-primary my-5 py-5">
+{{-- <div class="container-fluid bg-primary  py-5" style=" height: 100vh;"> --}}
+    <div class="container-fluid bg-primary py-5 d-flex align-items-center justify-content-center" style="height: 100vh;">
     <div class="container py-5">
         <div class="row gx-5">
             <div class="col-lg-6 mb-5 mb-lg-0">
@@ -50,7 +51,7 @@
                                 @enderror
                             </div>
                             <div class="col-12 col-sm-6">
-                              
+
                                     <input type="date" name="date" class="form-control bg-light border-0 datetimepicker-input @error('date') is-invalid @enderror" placeholder="Date" data-target="#date" data-toggle="datetimepicker" style="height: 55px;" value="{{ old('date') }}" required>
                                     @error('date')
                                         <div class="invalid-feedback">{{ $message }}</div>
