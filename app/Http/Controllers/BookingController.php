@@ -76,7 +76,7 @@ class BookingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Booking $booking)
     {
        $validated = $request->validate([
 
@@ -91,7 +91,7 @@ class BookingController extends Controller
 
         ]);
 
-        Booking::create($validated);
+        $booking->update($validated);
 
         return redirect()->route('booking.index')->with('success', 'You have Updated the appoinment successfuly!');
     }
